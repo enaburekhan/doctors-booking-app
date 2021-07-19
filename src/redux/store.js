@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import doctorsReducer from './doctors';
+import doctorsReducer from './doctorsSlice';
 
 export default configureStore({
   reducer: {

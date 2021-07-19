@@ -1,4 +1,4 @@
-import Doctors from './Doctors';
+import DoctorsList from './DoctorsList';
 
 function App() {
   return (
@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <div className="content">
 
-        <Doctors />
+        <DoctorsList />
       </div>
     </div>
 

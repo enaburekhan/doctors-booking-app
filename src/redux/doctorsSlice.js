@@ -2,6 +2,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import API from '../api/api';
 
+const initialState = [];
+
 export const getDoctors = createAsyncThunk(
   'doctors/getDoctors',
   async (token) => {
@@ -12,30 +14,19 @@ export const getDoctors = createAsyncThunk(
     });
     if (!response.ok) throw new Error(response.statusText);
     const data = await response.json();
+    // console.log(data);
     return data.doctors;
   },
 );
 
-export const doctors = createSlice({
+export const doctorsSlice = createSlice({
   name: 'doctors',
-  initialState: {
-    loading: false,
-    error: null,
-    data: [],
-  },
+  initialState,
+  reducers: {},
   extraReducers: {
-    [getDoctors.pending]: (state) => {
-      state.loading = true;
-    },
-    [getDoctors.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    },
-    [getDoctors.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.data = action.payload;
-    },
+    [getDoctors.fulfilled]: (state, action) => action.payload,
   },
+
 });
 
-export default doctors.reducer;
+export default doctorsSlice.reducer;
