@@ -4,9 +4,10 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './components/App';
 import store from './redux/store';
-import { getDoctors } from './redux/doctorsSlice';
+// import { getDoctors } from './redux/doctorsSlice';
 
-store.dispatch(getDoctors);
+// store.dispatch(getDoctors);
+// console.log('good at', dispatch);
 
 ReactDOM.render(
   <React.StrictMode>

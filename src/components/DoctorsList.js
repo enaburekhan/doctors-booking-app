@@ -9,6 +9,7 @@ const DoctorsList = () => {
 
   useEffect(() => {
     dispatch(getDoctors());
+    console.log('why dispatch', dispatch);
   }, [dispatch]);
 
   const { doctors } = useSelector((state) => state.doctors);
