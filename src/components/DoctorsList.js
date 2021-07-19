@@ -5,15 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDoctors } from '../redux/doctorsSlice';
 
 const DoctorsList = () => {
-  const { doctors } = useSelector((state) => state.doctors);
-  console.log(doctors);
-  // const doctorStatus = useSelector((state) => state.doctors.status);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDoctors());
   }, [dispatch]);
+
+  const { doctors } = useSelector((state) => state.doctors);
 
   // const renderedDoctors = doctors.map((doctor) => (
   //   <section className="" key={doctor.id}>
