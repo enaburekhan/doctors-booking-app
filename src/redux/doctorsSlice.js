@@ -12,9 +12,10 @@ export const getDoctors = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log('responses', response);
     if (!response.ok) throw new Error(response.statusText);
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     return data.doctors;
   },
 );

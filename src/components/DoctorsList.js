@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getDoctors } from '../redux/doctorsSlice';
@@ -7,15 +7,13 @@ import { getDoctors } from '../redux/doctorsSlice';
 const DoctorsList = () => {
   const { doctors } = useSelector((state) => state.doctors);
   console.log(doctors);
-  const doctorStatus = useSelector((state) => state.doctors.status);
+  // const doctorStatus = useSelector((state) => state.doctors.status);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (doctorStatus === 'idle') {
-      dispatch(getDoctors());
-    }
-  }, [doctorStatus, dispatch]);
+    dispatch(getDoctors());
+  }, [dispatch]);
 
   // const renderedDoctors = doctors.map((doctor) => (
   //   <section className="" key={doctor.id}>
@@ -27,9 +25,9 @@ const DoctorsList = () => {
   // ));
 
   return (
-    <section className="">
+    <div className="">
       <h2>Doctors</h2>
-    </section>
+    </div>
 
   );
 };
