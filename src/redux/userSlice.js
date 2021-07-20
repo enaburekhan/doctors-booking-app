@@ -86,6 +86,7 @@ export const userSlice = createSlice({
       state.isFetching = false;
       state.isSuccess = true;
       state.username = payload.user.username;
+      state.password = payload.user.password;
       state.age = payload.user.age;    
     },
     [signupUser.pending]: (state) => {
@@ -95,7 +96,23 @@ export const userSlice = createSlice({
       state.isFetching = false;
       state.isError = true;
       state.errorMessage = payload.message;    
-    }
+    },
+    [loginUser.fulfilled]: (state, { payload }) => {
+       state.username = payload.username;
+       state.password = payload.password;
+       state.isFetching = false;
+       state.isSuccess = true;
+       return state;   
+    },
+    [loginUser.rejected]: (state, { payload }) => {
+      console.log('payload', payload);
+      state.isFetching = false;
+      state.isError = true;
+      state.errorMessage = payload.message;    
+    },
+    [loginUser.pending]: (state) => {
+      state.isFetching = true;    
+    },
   },
 });
 
