@@ -35,6 +35,39 @@ export const signupUser = createAsyncThunk(
   }   
 )
 
+export const loginUser = createAsyncThunk(
+  'users/login',
+  async ({ username, password }, thunkAPI) => {
+    try {
+      const res = await fetch(
+        'https://enab-doctors-appointment.herokuapp.com/api/v1/authentications',  
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',    
+          },
+          body: JSON.stringify({
+            username,
+            password,    
+          }),    
+        } 
+      );
+      let data = await res.json();
+      console.log('res', data);
+      if(res.status === 200) {
+        localStorage.setItem('token', data.token);
+        return data    
+      } else {
+        return thunkAPI.rejectWithValue(data);  
+      }    
+    } catch (e) {
+       console.log('Error', e.res.data)
+       thunkAPI.rejectWithValue(e.res.data)  
+    }    
+  }   
+);
+
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
