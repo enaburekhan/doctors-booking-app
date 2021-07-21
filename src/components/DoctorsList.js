@@ -9,10 +9,10 @@ const DoctorsList = () => {
 
   useEffect(() => {
     dispatch(getDoctors());
-    console.log('why dispatch', dispatch);
+    console.log('dispatch', dispatch);
   }, [dispatch]);
 
-  const { doctors } = useSelector((state) => state.doctors);
+  // const { doctors } = useSelector((state) => state.doctors);
 
   // const renderedDoctors = doctors.map((doctor) => (
   //   <section className="" key={doctor.id}>
