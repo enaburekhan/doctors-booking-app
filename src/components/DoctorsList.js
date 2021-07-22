@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getDoctors } from '../redux/doctorsSlice';
 
 const DoctorsList = () => {
@@ -20,6 +21,9 @@ const DoctorsList = () => {
       <p>{doctor.name}</p>
       <p>{doctor.specialization}</p>
       <p>{doctor.experience}</p>
+      <Link to={`/doctors/${doctor.id}`} className="">
+        View Doctor
+      </Link>
     </section>
   ));
 

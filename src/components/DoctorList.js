@@ -1,10 +1,22 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+// import { useParams } from 'react-router-dom';
+import { getDoctors } from '../redux/doctorsSlice';
 
 const DoctorList = ({ match }) => {
   const { doctorId } = match.params;
 
+  const dispatch = useDispatch();
+
+  //   const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getDoctors());
+  }, [dispatch]);
+
   const doctor = useSelector((state) => state.doctors.find((doctor) => doctor.id === doctorId));
+  console.log('one-doctor', doctor);
 
   if (!doctor) {
     return (
