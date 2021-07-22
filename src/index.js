@@ -6,7 +6,8 @@ import App from './components/App';
 import store from './redux/store';
 // import { getDoctors } from './redux/doctorsSlice';
 
-// store.dispatch(getDoctors);
+// const dispatch = useDispatch();
+// store.dispatch(getDoctors());
 // console.log('good at', dispatch);
 
 ReactDOM.render(

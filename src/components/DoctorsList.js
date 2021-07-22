@@ -2,14 +2,14 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getDoctors } from '../redux/doctorsSlice';
+import { getDoctors, listDoctors } from '../redux/doctorsSlice';
 
 const DoctorsList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDoctors());
-    console.log('dispatch', dispatch);
+    console.log('dispatch out', dispatch);
   }, [dispatch]);
 
   // const { doctors } = useSelector((state) => state.doctors);

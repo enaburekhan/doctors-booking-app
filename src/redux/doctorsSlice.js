@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/no-extraneous-dependencies */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import _ from 'lodash';
 import API from '../api/api';
 
 export const getDoctors = createAsyncThunk(
@@ -14,8 +13,8 @@ export const getDoctors = createAsyncThunk(
     });
     if (!response.ok) throw new Error(response.statusText);
     const data = await response.json();
-    console.log(data);
-    return data.doctors;
+    console.log('doctorsData', data);
+    return data;
   },
 );
 
@@ -26,7 +25,7 @@ export const doctorsSlice = createSlice({
   initialState,
   reducers: {
     listDoctors(state, action) {
-      return { ...state, ..._.mapKeys(action.payload, 'id') };
+      state.push(action.payload);
     },
   },
   // extraReducers: {
