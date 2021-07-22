@@ -23,14 +23,14 @@ const initialState = [];
 export const doctorsSlice = createSlice({
   name: 'doctors',
   initialState,
-  reducers: {
-    listDoctors(state, action) {
-      state.push(action.payload);
-    },
-  },
-  // extraReducers: {
-  //   [getDoctors.fulfilled]: (state, action) => action.payload,
+  // reducers: {
+  //   listDoctors(state, action) {
+  //     state.push(action.payload);
+  //   },
   // },
+  extraReducers: {
+    [getDoctors.fulfilled]: (state, action) => action.payload,
+  },
 
 });
 

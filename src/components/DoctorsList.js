@@ -2,30 +2,31 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getDoctors, listDoctors } from '../redux/doctorsSlice';
+import { getDoctors } from '../redux/doctorsSlice';
 
 const DoctorsList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDoctors());
-    console.log('dispatch out', dispatch);
   }, [dispatch]);
 
-  // const { doctors } = useSelector((state) => state.doctors);
+  const doctors = useSelector((state) => state.doctors);
+  console.log('render doctors', doctors);
 
-  // const renderedDoctors = doctors.map((doctor) => (
-  //   <section className="" key={doctor.id}>
-  //     <p>{doctor.experience}</p>
-  //     <p className="">{doctor.image}</p>
-  //     <p>{doctor.name}</p>
-  //     <p>{doctor.specialization}</p>
-  //   </section>
-  // ));
+  const renderedDoctors = doctors.map((doctor) => (
+    <section className="" key={doctor.id}>
+      <img src={doctor.image} alt={doctor.name} className="" />
+      <p>{doctor.name}</p>
+      <p>{doctor.specialization}</p>
+      <p>{doctor.experience}</p>
+    </section>
+  ));
 
   return (
     <div className="">
-      <h2>Doctors</h2>
+      <h1>List Doctors</h1>
+      <h2>{renderedDoctors}</h2>
     </div>
 
   );
