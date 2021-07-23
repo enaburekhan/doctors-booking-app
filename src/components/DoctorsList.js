@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getDoctors } from '../redux/doctorsSlice';
+import { getDoctors, selectAllDoctors } from '../redux/doctorsSlice';
 
 const DoctorsList = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const DoctorsList = () => {
     dispatch(getDoctors());
   }, [dispatch]);
 
-  const doctors = useSelector((state) => state.doctors);
+  const doctors = useSelector(selectAllDoctors);
   console.log('render doctors', doctors);
 
   const renderedDoctors = doctors.map((doctor) => (

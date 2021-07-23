@@ -37,3 +37,9 @@ export const doctorsSlice = createSlice({
 export const { listDoctors } = doctorsSlice.actions;
 
 export default doctorsSlice.reducer;
+
+export const selectAllDoctors = (state) => state.doctors;
+
+export const selectDoctorById = (state, doctorId) => state.doctors.find(
+  (doctor) => doctor.id === doctorId,
+);
