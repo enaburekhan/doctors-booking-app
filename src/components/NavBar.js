@@ -1,4 +1,6 @@
+// import { NavLink } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+// import signUp from '../containers/signUp';
 
 const NavBar = () => (
   <nav>
@@ -10,8 +12,11 @@ const NavBar = () => (
           <Link to="/">Doctors</Link>
           <br />
           <Link to="/appointments">Appointments</Link>
+          <br />
+          <Link to="/signUp">signUp</Link>
         </div>
       </div>
+
     </section>
   </nav>
 );
