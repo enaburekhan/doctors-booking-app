@@ -13,7 +13,7 @@ export const getDoctors = createAsyncThunk(
     });
     if (!response.ok) throw new Error(response.statusText);
     const data = await response.json();
-    console.log('doctorsData', data);
+    // console.log('doctorsData', data);
     return data;
   },
 );

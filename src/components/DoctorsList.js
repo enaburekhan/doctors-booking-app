@@ -13,7 +13,7 @@ const DoctorsList = () => {
   }, [dispatch]);
 
   const doctors = useSelector(selectAllDoctors);
-  console.log('render doctors', doctors);
+  // console.log('render doctors', doctors);
 
   const renderedDoctors = doctors.map((doctor) => (
     <section className="" key={doctor.id}>

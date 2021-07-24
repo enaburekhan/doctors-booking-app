@@ -3,10 +3,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import API from '../api/api';
 
+// async ({ username, password, endpoint }) => {
+//     const response = await fetch(`${API}/${endpoint}`, {
+
 export const postAppointments = createAsyncThunk(
   'appointments/postAppointments',
-  async ({ appointmentDate, doctorId, userId }) => {
-    const response = await fetch(`${API}/appointments`, {
+  async ({
+    appointmentDate, doctorId, userId, endpoint,
+  }) => {
+    const response = await fetch(`${API}/${endpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
