@@ -1,15 +1,14 @@
-// import { NavLink } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-// import signUp from '../containers/signUp';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = () => (
   <nav>
     <section>
-      <h1>Doctors Booking app</h1>
+      <h5>Echantill clinic</h5>
 
       <div className="navContent">
         <div className="navLinks">
-          <Link to="/">Doctors</Link>
+          <Link to="/doctors">Doctors</Link>
           <br />
           <Link to="/appointments">Appointments</Link>
           <br />
