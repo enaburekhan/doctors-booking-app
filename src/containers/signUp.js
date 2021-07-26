@@ -42,7 +42,7 @@ const signUp = () => {
             <input
               type="text"
               name="username"
-              className="form-control"
+              id="username"
               required
               minLength="3"
               maxLength="15"
@@ -55,9 +55,9 @@ const signUp = () => {
           <label htmlFor="password" className="control-label">
             Password
             <input
-              type="text"
+              type="password"
               name="password"
-              className="form-control"
+              id="password"
               required
               minLength="5"
               value={password}
@@ -71,9 +71,9 @@ const signUp = () => {
             <input
               type="text"
               name="age"
-              className="form-control"
+              id="age"
               required
-              minLength="5"
+              minLength="1"
               value={age}
               onChange={(e) => setAge(e.target.value)}
             />
