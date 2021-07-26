@@ -1,26 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { userAuth } from '../redux/userSlice';
 import Loading from './Loading';
 
-const signUp = () => {
-  const history = useHistory();
+const RegisterForm = ({ access, endpoint }) => {
+//   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
 
-  const token = localStorage.getItem('token');
+  //   const token = localStorage.getItem('token');
 
-  useEffect(() => {
-    if (token) {
-      history.push('/signUp');
-    }
-  }, [token]);
-
-  const endpoint = 'users';
+  //   useEffect(() => {
+  //     if (token) {
+  //       history.push('/');
+  //     }
+  //   }, [token]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +35,6 @@ const signUp = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div className="form-group create">
-          <h2 className="create">Sign up to create an account</h2>
           <label htmlFor="username" className="control-label">
             Username
             <input
@@ -81,13 +79,34 @@ const signUp = () => {
         </div>
 
         <div className="form-group create">
-          <button type="submit" className="btn btn-primary btn-lg">
-            Signup
+          <button
+            type="submit"
+            className="btn btn-primary btn-lg"
+          >
+            {access}
           </button>
         </div>
       </form>
+      { access === 'Signup' ? (
+        <p className="text-center">
+          Do you already have an account?
+          {' '}
+          <Link to="/Login">Login</Link>
+        </p>
+      ) : (
+        <p className="text-center">
+          Do you need to create an account?
+          {' '}
+          <Link to="/Signup">Signup</Link>
+        </p>
+      )}
     </>
   );
 };
 
-export default signUp;
+export default RegisterForm;
+
+RegisterForm.propTypes = {
+  access: PropTypes.string.isRequired,
+  endpoint: PropTypes.string.isRequired,
+};
