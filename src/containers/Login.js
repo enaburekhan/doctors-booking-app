@@ -4,28 +4,27 @@ import { useHistory } from 'react-router-dom';
 import { userAuth } from '../redux/userSlice';
 import Loading from './Loading';
 
-const signUp = () => {
+const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [age, setAge] = useState('');
 
   const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (token) {
-      history.push('/signUp');
+      history.push('/Login');
     }
   }, [token]);
 
-  const endpoint = 'users';
+  const endpoint = 'authentications';
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(userAuth({
-      username, password, age, endpoint,
+      username, password, endpoint,
     }));
   };
   if (user.loading) {
@@ -36,7 +35,7 @@ const signUp = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div className="form-group create">
-          <h2 className="create">Sign up to create an account</h2>
+          <h2 className="create">Login</h2>
           <label htmlFor="username" className="control-label">
             Username
             <input
@@ -65,29 +64,28 @@ const signUp = () => {
             />
           </label>
         </div>
-        <div className="form-group create">
-          <label htmlFor="age" className="control-label">
-            Age
-            <input
-              type="text"
-              name="age"
-              id="age"
-              required
-              minLength="1"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-            />
-          </label>
-        </div>
 
         <div className="form-group create">
           <button type="submit" className="btn btn-primary btn-lg">
-            Signup
+            Login
           </button>
         </div>
       </form>
     </>
   );
 };
+// { type === 'Signup' ? (
+//   <p className="text-center">
+//     Do you already have an account?
+//     {' '}
+//     <Link to="/login">Login</Link>
+//   </p>
+// ) : (
+//   <p className="text-center">
+//     Do you need to make an account?
+//     {' '}
+//     <Link to="/signup">Signup</Link>
+//   </p>
+// )}
 
-export default signUp;
+export default Login;

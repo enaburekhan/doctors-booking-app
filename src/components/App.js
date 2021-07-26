@@ -7,6 +7,7 @@ import Appointments from './Appointments';
 import DoctorList from './DoctorList';
 import DoctorsList from './DoctorsList';
 import NavBar from './NavBar';
+import Login from '../containers/Login';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/doctors/:doctorId" component={DoctorList} />
           <Route exact path="/appointments" component={Appointments} />
           <Route exact path="/signUp" component={signUp} />
+          <Route exact path="/Login" component={Login} />
           <Redirect to="/" />
         </Switch>
       </Router>

@@ -8,11 +8,24 @@ const NavBar = () => (
 
       <div className="navContent">
         <div className="navLinks">
-          <Link to="/doctors">Doctors</Link>
-          <br />
-          <Link to="/appointments">Appointments</Link>
-          <br />
-          <Link to="/signUp">signUp</Link>
+          <ul>
+            <li>
+              <Link to="/doctors">Doctors</Link>
+            </li>
+            <li>
+              <Link to="/doctors">Doctors</Link>
+            </li>
+            <li>
+              <Link to="/appointments">Appointments</Link>
+            </li>
+            <li>
+              <Link to="/signUp">signUp</Link>
+            </li>
+            <li>
+              <Link to="/Login">Login</Link>
+            </li>
+          </ul>
+
         </div>
       </div>
 
