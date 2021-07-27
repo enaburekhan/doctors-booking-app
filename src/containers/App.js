@@ -6,7 +6,6 @@ import Signup from './Signup';
 import Appointments from '../components/Appointments';
 import DoctorList from '../components/DoctorList';
 import DoctorsList from '../components/DoctorsList';
-import NavBar from '../components/NavBar';
 import Login from './Login';
 import PrivateRoute from './PrivateRoute';
 
@@ -15,15 +14,13 @@ function App() {
 
     <div className="App">
       <Router>
-        <NavBar />
         <Switch>
-          <Route exact path="/doctors" component={DoctorsList} />
-          <Route exact path="/doctors/:doctorId" component={DoctorList} />
-          <Route exact path="/appointments" component={Appointments} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/Login" component={Login} />
-          <PrivateRoute component={DoctorsList} />
-          <Redirect to="/" />
+          <PrivateRoute exact path="/doctors" component={DoctorsList} />
+          <PrivateRoute exact path="/doctors/:doctorId" component={DoctorList} />
+          <PrivateRoute exact path="/appointments" component={Appointments} />
+          <Redirect to="/doctors" />
         </Switch>
       </Router>
 

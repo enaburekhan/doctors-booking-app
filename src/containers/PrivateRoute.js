@@ -7,8 +7,9 @@ const PrivateRoute = ({ component: Component }) => {
 
   return token ? (
     <>
-      <Component />
       <NavBar />
+      <Component />
+
     </>
   )
     : <Redirect to={{ pathname: '/Login' }} />;

@@ -6,20 +6,20 @@ import { userAuth } from '../redux/userSlice';
 import Loading from './Loading';
 
 const RegisterForm = ({ access, endpoint }) => {
-//   const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
 
-  //   const token = localStorage.getItem('token');
+  // const token = localStorage.getItem('token');
 
-  //   useEffect(() => {
-  //     if (token) {
-  //       history.push('/');
-  //     }
-  //   }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     history.push('/');
+  //   }
+  // }, [token]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
