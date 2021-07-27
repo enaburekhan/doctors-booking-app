@@ -8,12 +8,14 @@ import DoctorList from '../components/DoctorList';
 import DoctorsList from '../components/DoctorsList';
 import Login from './Login';
 import PrivateRoute from './PrivateRoute';
+import Logout from '../components/Logout';
 
 function App() {
   return (
 
     <div className="App">
       <Router>
+        <Logout />
         <Switch>
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/Login" component={Login} />
