@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import RegisterForm from '../components/RegisterForm';
 import { changeType } from '../redux/typeSlice';
-import RegisterForm from './RegisterForm';
 
 const Login = () => {
   const dispatch = useDispatch();

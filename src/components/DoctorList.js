@@ -1,45 +1,53 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import { selectDoctorById } from '../redux/doctorsSlice';
-// import { useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 // import { getDoctors } from '../redux/doctorsSlice';
+import { userAuth } from '../redux/userSlice';
 
-const DoctorList = ({ match }) => {
-  const { doctorId } = match.params;
+const DoctorList = () => {
+  const [data, setData] = useState('');
+  const [loading, setLoading] = useState(true);
+  const { user: currentUser } = useSelector((state) => state.user);
 
-  //   const dispatch = useDispatch();
-
-  //   const { id } = useParams();
-
-  //   useEffect(() => {
-  //     const list = dispatch(getDoctors());
-  //     console.log('lists', list);
-  //   }, [dispatch]);
-
-  const doctor = useSelector((state) => selectDoctorById(state, doctorId));
-  console.log('one-doctor', doctor);
-
-  if (!doctor) {
-    return (
-      <section>
-        <h2>Doctor not found!</h2>
-      </section>
-    );
+  if (!currentUser) {
+    return <Redirect to="/Login" />;
   }
+  const { doctorId } = useParams();
+  useEffect(() => {
+    userAuth(doctorId).then(
+      (response) => {
+        setLoading(false);
+        const loop = setData(response.data);
+        console.log('response-data', loop);
+      },
+      (error) => {
+        setLoading(false);
+        const message = (error.response
+            && error.response.data
+            && error.response.data.message)
+          || error.message
+          || error.toString();
+
+        setData(message);
+      },
+    );
+  }, []);
 
   return (
-    <section className="" key={doctor.id}>
-      <img src={doctor.image} alt={doctor.name} className="" />
-      <p>{doctor.name}</p>
-      <p>{doctor.specialization}</p>
-      <p>{doctor.experience}</p>
+    <section className="" key={data.id}>
+      <div className="text-center">
+        {loading && <span className="spinner-border spinner-border-lg" />}
+      </div>
+      <img src={data.image} alt={data.name} className="" />
+      <p>{data.name}</p>
+      <p>{data.specialization}</p>
+      <p>{data.experience}</p>
     </section>
   );
 };
 
 export default DoctorList;
 
-DoctorList.propTypes = {
-  match: PropTypes.number.isRequired,
-};
+// DoctorList.propTypes = {
+//   match: PropTypes.number.isRequired,
+// };
