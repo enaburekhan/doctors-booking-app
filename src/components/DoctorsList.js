@@ -15,8 +15,8 @@ const DoctorsList = () => {
   const doctors = useSelector(selectAllDoctors);
   // console.log('render doctors', doctors);
 
-  const renderedDoctors = doctors.map((doctor) => (
-    <section className="" key={doctor.id}>
+  const renderedDoctors = doctors.data && doctors.data.map((doctor) => (
+    <div className="" key={doctor.id}>
       <img src={doctor.image} alt={doctor.name} className="" />
       <p>{doctor.name}</p>
       <p>{doctor.specialization}</p>
@@ -24,7 +24,7 @@ const DoctorsList = () => {
       <Link to={`/doctors/${doctor.id}`} className="">
         View Doctor
       </Link>
-    </section>
+    </div>
   ));
 
   return (

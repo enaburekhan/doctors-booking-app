@@ -18,18 +18,27 @@ export const getDoctors = createAsyncThunk(
   },
 );
 
-const initialState = [];
+// const initialState = [];
 
 export const doctorsSlice = createSlice({
   name: 'doctors',
-  initialState,
-  // reducers: {
-  //   listDoctors(state, action) {
-  //     state.push(action.payload);
-  //   },
-  // },
+  initialState: {
+    loading: false,
+    error: null,
+    data: null,
+  },
   extraReducers: {
-    [getDoctors.fulfilled]: (state, action) => action.payload,
+    [getDoctors.pending]: (state) => {
+      state.loading = true;
+    },
+    [getDoctors.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.error.message;
+    },
+    [getDoctors.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.data = action.payload;
+    },
   },
 
 });
