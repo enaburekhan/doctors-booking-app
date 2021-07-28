@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { userAuth } from '../redux/userSlice';
 import Loading from './Loading';
 
 const RegisterForm = ({ access, endpoint }) => {
-  // const history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [username, setUsername] = useState('');
@@ -25,7 +25,10 @@ const RegisterForm = ({ access, endpoint }) => {
     e.preventDefault();
     dispatch(userAuth({
       username, password, age, endpoint,
-    }));
+    }))
+      .then(() => {
+        history.push('/doctors');
+      });
   };
   if (user.loading) {
     return <Loading />;

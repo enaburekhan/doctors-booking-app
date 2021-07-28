@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import RegisterForm from '../components/RegisterForm';
 // import { Redirect } from 'react-router-dom';
+import RegisterForm from '../components/RegisterForm';
 import { changeType } from '../redux/typeSlice';
 
 const Signup = () => {
@@ -13,7 +13,7 @@ const Signup = () => {
   return (
     <>
       <RegisterForm access={access} endpoint="users" />
-      {/* { access ? (
+      {/* { access === 'Signup' ? (
         <p className="text-center">
           <Redirect to="/Login" />
         </p>
