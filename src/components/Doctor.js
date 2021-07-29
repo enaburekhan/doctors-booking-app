@@ -1,27 +1,25 @@
-// import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
-import { selectDoctorById } from '../redux/doctorsSlice';
-// import { getDoctors } from '../redux/doctorsSlice';
-// import { userAuth } from '../redux/userSlice';
+import { getDoctor } from '../redux/doctorSlice';
+// import { selectDoctorById } from '../redux/doctorsSlice';
 
 const Doctor = () => {
   // const [data, setData] = useState('');
-  // const [loading, _setLoading] = useState(true);
+  const loading = useState(true);
   const user = useSelector((state) => state.user);
-  const doctors = useSelector((state) => state.doctors);
 
   if (!user) {
     return <Redirect to="/Login" />;
   }
   const { doctorId } = useParams();
 
-  console.log('doctors', doctors);
-  const data = selectDoctorById(doctors.data, doctorId);
-  console.log('dataa', data);
+  // console.log('doctors', doctors);
+  // const data = selectDoctorById(doctors.data, doctorId);
+  // console.log('dataa', data);
 
   // useEffect(() => {
-  //   userAuth(doctorId)
+  //   getDoctor(id)
   //     .then(
   //       (response) => {
   //         setLoading(false);
@@ -40,15 +38,23 @@ const Doctor = () => {
   //     );
   // }, []);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDoctor(doctorId));
+  }, [dispatch]);
+
+  const doctor = useSelector((state) => state.doctor);
+
   return (
-    <div className="" key={data.id}>
+    <div className="" key={doctor.id}>
       <div className="text-center">
-        {/* {loading && <span className="spinner-border spinner-border-lg" />} */}
+        {loading && <span className="spinner-border spinner-border-lg" />}
       </div>
-      <img src={data.image} alt={data.name} className="" />
-      <p>{data.name}</p>
-      <p>{data.specialization}</p>
-      <p>{data.experience}</p>
+      <img src={doctor.image} alt={doctor.name} className="" />
+      <p>{doctor.name}</p>
+      <p>{doctor.specialization}</p>
+      <p>{doctor.experience}</p>
     </div>
   );
 };

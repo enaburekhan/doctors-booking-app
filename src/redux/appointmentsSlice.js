@@ -9,9 +9,9 @@ import API from '../api/api';
 export const postAppointments = createAsyncThunk(
   'appointments/postAppointments',
   async ({
-    appointmentDate, doctorId, userId, endpoint,
+    appointmentDate, doctorId, userId
   }) => {
-    const response = await fetch(`${API}/${endpoint}`, {
+    const response = await fetch(`${API}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
