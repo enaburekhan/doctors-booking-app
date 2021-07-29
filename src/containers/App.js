@@ -9,6 +9,8 @@ import DoctorsList from '../components/DoctorsList';
 import Login from './Login';
 // import PrivateRoute from './PrivateRoute';
 import Logout from '../components/Logout';
+import NavBar from '../components/NavBar';
+import NewAppointment from '../components/NewAppointment';
 
 function App() {
   return (
@@ -16,11 +18,13 @@ function App() {
     <div className="App">
       <Router>
         <Logout />
+        <NavBar />
         <Switch>
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/doctors" component={DoctorsList} />
           <Route exact path="/doctors/:id" component={Doctor} />
+          <Route exact path="/appointments/new" component={NewAppointment} />
           <Route exact path="/appointments" component={Appointments} />
           <Redirect to="/doctors" />
         </Switch>

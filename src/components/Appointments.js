@@ -1,29 +1,62 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { postAppointments } from '../redux/appointmentsSlice';
 
 const Appointments = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(postAppointments());
-  }, [dispatch]);
+    if (user) {
+      dispatch(postAppointments(user.userId));
+    }
+  }, []);
 
-  const appointments = useSelector((state) => state.appointments);
-  console.log('appointments', appointments);
+  const appointmentsState = useSelector((state) => state.appointments);
+  console.log('appointments', appointmentsState);
 
-  //   const renderedAppointments = appointments.map((appointment) => (
-  //     <section className="" key={appointment.id}>
-  //       <p>{appointment.appointmentDate}</p>
-  //       <p>{appointment.doctorId}</p>
-  //       <p>{appointment.userId}</p>
-  //     </section>
-  //   ));
+  // const { data, loading } = appointmentsState;
+
+  if (!user) {
+    return <Redirect to="/login" />;
+  }
+
+  // if (!loading && data.length === 0) {
+  //   appointments = (
+  //     <h4>
+  //       You do not have any appointment. Create one
+  //       <Link to="/appointments/new">
+  //         here
+  //       </Link>
+  //     </h4>
+  //   );
+  // } else {
+  //   appointments = data && data.map(appointment => {
+  //     const d = new Date(appointment.appointment_date);
+  //     const date = d.toUTCString();
+  //     return (
+  //       <Link to={`/appointments/${appointment.id}`} key={appointment.id}>
+  //         <div className="card m-4">
+  //           <div className="card-body">
+  //             <p>
+  //               On &nbsp;
+  //               {date}
+  //             </p>
+  //           </div>
+  //         </div>
+  //       </Link>
+  //     );
+  //   });
+  // }
 
   return (
-    <div className="">
-      <h1>Appointments</h1>
-      {/* <h2>{renderedAppointments}</h2> */}
+    <div className="container text-center">
+      <h3>Appointments</h3>
+      {/* {loading && <span className="spinner-border spinner-border-lg" />}
+      <div className="d-flex flex-wrap">
+        {appointments}
+      </div> */}
     </div>
   );
 };
