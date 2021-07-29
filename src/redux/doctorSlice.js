@@ -7,12 +7,10 @@ import API from '../api/api';
 
 // console.log(id);
 
-let doctor;
-
 export const getDoctor = createAsyncThunk(
   'doctor/getDoctor',
-  async (token) => {
-    const response = await fetch(`${API}/doctors/${doctor.id}`, {
+  async ({ token, id }) => {
+    const response = await fetch(`${API}/doctors/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

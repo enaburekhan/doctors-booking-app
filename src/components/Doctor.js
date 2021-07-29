@@ -12,7 +12,7 @@ const Doctor = () => {
   if (!user) {
     return <Redirect to="/Login" />;
   }
-  const { doctorId } = useParams();
+  const { id } = useParams();
 
   // console.log('doctors', doctors);
   // const data = selectDoctorById(doctors.data, doctorId);
@@ -41,7 +41,7 @@ const Doctor = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDoctor(doctorId));
+    dispatch(getDoctor(id));
   }, [dispatch]);
 
   const doctor = useSelector((state) => state.doctor);

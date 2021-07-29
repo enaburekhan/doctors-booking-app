@@ -9,7 +9,7 @@ import API from '../api/api';
 export const postAppointments = createAsyncThunk(
   'appointments/postAppointments',
   async ({
-    appointmentDate, doctorId, userId
+    appointmentDate, doctorId, userId,
   }) => {
     const response = await fetch(`${API}/appointments`, {
       method: 'POST',
