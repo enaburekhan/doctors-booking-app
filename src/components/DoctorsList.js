@@ -9,6 +9,7 @@ const DoctorsList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('useeffect');
     dispatch(getDoctors());
   }, [dispatch]);
 

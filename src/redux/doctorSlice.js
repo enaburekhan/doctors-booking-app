@@ -2,14 +2,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import API from '../api/api';
 
-// const arr = [1, 2, 3, 4, 5, 6];
-// const id = arr.map((num) => num);
-
-// console.log(id);
-
 export const getDoctor = createAsyncThunk(
   'doctor/getDoctor',
-  async ({ token, id }) => {
+  async (id, token) => {
+    console.log('token', token);
+    console.log('id is', id);
     const response = await fetch(`${API}/doctors/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
