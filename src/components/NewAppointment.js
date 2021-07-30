@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useLocation } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 // import { useAlert } from 'react-alert';
-import CheckButton from 'react-validation/build/button';
+// import CheckButton from 'react-validation/build/button';
 import { postAppointments } from '../redux/appointmentsSlice';
 import { getDoctors } from '../redux/doctorsSlice';
 
@@ -12,21 +12,22 @@ const NewAppointment = () => {
   const [doctorId, setDoctorId] = useState('');
   const [successful, setSuccessful] = useState(false);
   const [loading, setLoading] = useState(false);
-  const checkBtn = useRef;
-  const form = useRef();
-  const user = useSelector((state) => state.user);
-  const location = useLocation();
+  //   const checkBtn = useRef;
+  //   const form = useRef();
+  const { data: userData } = useSelector((state) => state.user);
+  console.log('userData', userData);
+  //   const location = useLocation();
   const dispatch = useDispatch();
   //   const alert = useAlert();
   const { data, error } = useSelector((state) => state.doctors);
   console.log('data', data);
   useEffect(() => {
-    if (location.doctorId) {
-      setDoctorId(location.doctorId);
-    } else {
-      setDoctorId(1);
-    }
-    if (data === null && user) {
+    // if (location.doctorId) {
+    //   setDoctorId(location.doctorId);
+    // } else {
+    //   setDoctorId(1);
+    // }
+    if (data === null && userData) {
       dispatch(getDoctors())
         .then(() => {
           loading(false);
@@ -40,37 +41,39 @@ const NewAppointment = () => {
   const onChangeDoctorId = (e) => {
     const doctorId = e.target.value;
     setDoctorId(doctorId);
+    console.log('doctorUnchange', doctorId);
   };
 
   const onChangeAppointmentDate = (e) => {
     const appointmentDate = e.target.value;
     setAppointmentDate(appointmentDate);
+    console.log('apptntmentonchange', appointmentDate);
   };
 
   const handleBooking = (e) => {
     e.preventDefault();
     setSuccessful(false);
 
-    form.current.validateAll();
+    // form.current.validateAll();
 
     // eslint-disable-next-line no-underscore-dangle
-    if (checkBtn.current.context._errors.length === 0) {
-      postAppointments(user.user.id, doctorId, appointmentDate)
-        .then(() => {
-          setSuccessful(true);
-          alert.show('Appointment created', {
-            type: 'success',
-            timeout: 2000,
-          });
-        })
-        .catch(() => {
-          dispatch(error('Something went wrong'));
-          setSuccessful(false);
+
+    dispatch(postAppointments(userData.user_id, doctorId, appointmentDate))
+      .then(() => {
+        setSuccessful(true);
+        alert.show('Appointment created', {
+          type: 'success',
+          timeout: 2000,
         });
-    } else {
-      setLoading(false);
-    }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setSuccessful(false);
+      });
+    console.log('userdataId', userData.user_id);
   };
+
   console.log('data now', data);
   const options = data && (
     data.map((doctor) => (
@@ -83,7 +86,7 @@ const NewAppointment = () => {
     ))
   );
 
-  if (!user) {
+  if (!userData) {
     return <Redirect to="/login" />;
   }
   if (successful) {
@@ -100,7 +103,7 @@ const NewAppointment = () => {
               <label htmlFor="appointmentDate" className="control-label">
                 Appointment Date
                 <input
-                  type="datetime-local"
+                  type="date"
                   className="form-control"
                   name="appointmentDate"
                   id="appointmentDate"
@@ -135,7 +138,7 @@ const NewAppointment = () => {
             </div>
           </div>
           )}
-          <CheckButton style={{ display: 'none' }} ref={checkBtn} />
+          {/* <CheckButton style={{ display: 'none' }} ref={checkBtn} /> */}
         </form>
       </div>
     </div>

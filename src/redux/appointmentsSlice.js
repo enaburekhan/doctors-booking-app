@@ -6,14 +6,23 @@ import API from '../api/api';
 export const postAppointments = createAsyncThunk(
   'appointments/postAppointments',
   async (
-    appointmentDate, doctorId, userId,
+    {
+      userId, token, appointmentDate, doctorId,
+    },
   ) => {
+    console.log('appointmentDate', appointmentDate);
+    console.log('doctorId', doctorId);
+    console.log('userId', userId);
+    console.log('token', token);
     const response = await fetch(`${API}/users/${userId}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+
       },
+
       body: JSON.stringify({
         appointmentDate,
         doctorId,
@@ -30,26 +39,38 @@ export const postAppointments = createAsyncThunk(
   },
 );
 
-export const addAppointment = createAsyncThunk(
-  'appointments/addAppointment',
-  async (id, token) => {
-    const response = await fetch(
-      `${API}/users/${id}/appointments`,
-      {
-        method: 'PATCH',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          appointment_date: id.appointment_date + 1,
-        }),
+// export const getAppointments = createAsyncThunk(
+//   'appointments/getAppointments',
+//   async (id) => {
+//     console.log('getId', id);
+//     const response = await fetch(
+//       `${API}/users/${id}/appointments`,
+//       {
+//         method: 'GET',
+//         headers: {
+//           // Authorization: `Bearer ${token}`,
+//           'Content-Type': 'application/json',
+//           Accept: 'application/json',
+//         },
+//       },
+//     );
+//     if (!response.ok) throw new Error(response.statusText);
+//     const data = await response.json();
+//     console.log('modify data', data);
+//     return data;
+//   },
+// );
+
+export const getAppointments = createAsyncThunk(
+  'appointments/getAppointments',
+  async ({ token, id }) => {
+    const response = await fetch(`${API}/users/${id}/appointments`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-    );
+    });
     if (!response.ok) throw new Error(response.statusText);
     const data = await response.json();
-    console.log('modify data', data);
     return data;
   },
 );
@@ -73,21 +94,16 @@ export const appointmentsSlice = createSlice({
       state.loading = false;
       state.data = action.payload;
     },
-    [addAppointment.pending]: (state) => {
+    [getAppointments.pending]: (state) => {
       state.loading = true;
     },
-    [addAppointment.rejected]: (state, action) => {
+    [getAppointments.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.error.message;
     },
-    [addAppointment.fulfilled]: (state, action) => {
+    [getAppointments.fulfilled]: (state, action) => {
       state.loading = false;
-      state.data = state.data.map((appointment) => {
-        if (appointment.id === action.payload.id) {
-          return action.payload;
-        }
-        return appointment;
-      });
+      state.data = action.payload;
     },
 
   },

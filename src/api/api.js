@@ -1,3 +1,3 @@
-const API = 'https://enab-doctors-appointment.herokuapp.com/api/v1';
+const API = 'https://agile-escarpment-87534.herokuapp.com/api/v1';
 
 export default API;

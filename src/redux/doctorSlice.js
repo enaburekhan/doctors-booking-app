@@ -5,8 +5,6 @@ import API from '../api/api';
 export const getDoctor = createAsyncThunk(
   'doctor/getDoctor',
   async (id, token) => {
-    console.log('token', token);
-    console.log('id is', id);
     const response = await fetch(`${API}/doctors/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -14,7 +12,6 @@ export const getDoctor = createAsyncThunk(
     });
     if (!response.ok) throw new Error(response.statusText);
     const data = await response.json();
-    console.log('singleDoctor', data);
     return data;
   },
 );

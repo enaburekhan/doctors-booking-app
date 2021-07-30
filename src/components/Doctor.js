@@ -14,14 +14,12 @@ const Doctor = () => {
 
   const user = useSelector((state) => state.user);
   const doctor = useSelector((state) => state.doctor);
-  console.log('doctor', doctor);
 
   if (!user) {
     return <Redirect to="/Login" />;
   }
 
   const { data, loading } = doctor;
-  console.log('ericData', data);
 
   return (
     <div className="">
