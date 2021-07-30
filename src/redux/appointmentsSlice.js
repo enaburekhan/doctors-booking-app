@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+/* eslint-disable camelcase */
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import API from '../api/api';
@@ -7,20 +8,18 @@ export const postAppointments = createAsyncThunk(
   'appointments/postAppointments',
   async (
     {
-      userId, token, appointmentDate, doctorId,
+      userId, appointmentDate, doctorId, jwt,
     },
   ) => {
     console.log('appointmentDate', appointmentDate);
     console.log('doctorId', doctorId);
     console.log('userId', userId);
-    console.log('token', token);
-    const response = await fetch(`${API}/users/${userId}/appointments`, {
+    fetch(`${API}/users/${userId}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${token}`,
-
+        Authorization: `Bearer ${jwt}`,
       },
 
       body: JSON.stringify({
@@ -28,43 +27,20 @@ export const postAppointments = createAsyncThunk(
         doctorId,
         userId,
       }),
+    }).then((data) => {
+      console.log('Success:', data);
+      localStorage.setItem('token', data.jwt);
+    }).catch((error) => {
+      // request just fail
+      throw new Error('Error:', error);
     });
-    const data = await response.json();
-    console.log('appointmentsData', data);
-    if (!response.ok) throw new Error(data.failure);
-    localStorage.setItem('token', data.jwt);
-    console.log('localstorageData', data);
-
-    return data;
   },
 );
 
-// export const getAppointments = createAsyncThunk(
-//   'appointments/getAppointments',
-//   async (id) => {
-//     console.log('getId', id);
-//     const response = await fetch(
-//       `${API}/users/${id}/appointments`,
-//       {
-//         method: 'GET',
-//         headers: {
-//           // Authorization: `Bearer ${token}`,
-//           'Content-Type': 'application/json',
-//           Accept: 'application/json',
-//         },
-//       },
-//     );
-//     if (!response.ok) throw new Error(response.statusText);
-//     const data = await response.json();
-//     console.log('modify data', data);
-//     return data;
-//   },
-// );
-
 export const getAppointments = createAsyncThunk(
   'appointments/getAppointments',
-  async ({ token, id }) => {
-    const response = await fetch(`${API}/users/${id}/appointments`, {
+  async ({ token, user_id }) => {
+    const response = await fetch(`${API}/users/${user_id}/appointments`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

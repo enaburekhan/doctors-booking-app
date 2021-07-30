@@ -9,14 +9,14 @@ const Appointments = () => {
 
   useEffect(() => {
     if (user) {
-      dispatch(getAppointments(user.id));
+      dispatch(getAppointments(user.user_id));
     }
   }, []);
 
-  const appointmentsState = useSelector((state) => state.appointments);
-  console.log('appointments', appointmentsState);
+  const appointments = useSelector((state) => state.appointments);
+  console.log('appointments', appointments);
 
-  const { data, loading } = appointmentsState;
+  const { data, loading } = appointments;
 
   if (!user) {
     return <Redirect to="/login" />;

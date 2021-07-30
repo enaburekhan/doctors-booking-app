@@ -1,9 +1,7 @@
+/* eslint-disable camelcase */
 import { useEffect, useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-// import { useAlert } from 'react-alert';
-// import CheckButton from 'react-validation/build/button';
 import { postAppointments } from '../redux/appointmentsSlice';
 import { getDoctors } from '../redux/doctorsSlice';
 
@@ -12,21 +10,13 @@ const NewAppointment = () => {
   const [doctorId, setDoctorId] = useState('');
   const [successful, setSuccessful] = useState(false);
   const [loading, setLoading] = useState(false);
-  //   const checkBtn = useRef;
-  //   const form = useRef();
   const { data: userData } = useSelector((state) => state.user);
-  console.log('userData', userData);
-  //   const location = useLocation();
+  const { user_id } = userData;
+  console.log('user_id', user_id);
   const dispatch = useDispatch();
-  //   const alert = useAlert();
   const { data, error } = useSelector((state) => state.doctors);
   console.log('data', data);
   useEffect(() => {
-    // if (location.doctorId) {
-    //   setDoctorId(location.doctorId);
-    // } else {
-    //   setDoctorId(1);
-    // }
     if (data === null && userData) {
       dispatch(getDoctors())
         .then(() => {
@@ -54,11 +44,8 @@ const NewAppointment = () => {
     e.preventDefault();
     setSuccessful(false);
 
-    // form.current.validateAll();
-
     // eslint-disable-next-line no-underscore-dangle
-
-    dispatch(postAppointments(userData.user_id, doctorId, appointmentDate))
+    dispatch(postAppointments({ user_id, doctorId, appointmentDate }))
       .then(() => {
         setSuccessful(true);
         alert.show('Appointment created', {
@@ -71,7 +58,6 @@ const NewAppointment = () => {
         console.log(error.message);
         setSuccessful(false);
       });
-    console.log('userdataId', userData.user_id);
   };
 
   console.log('data now', data);
@@ -138,7 +124,6 @@ const NewAppointment = () => {
             </div>
           </div>
           )}
-          {/* <CheckButton style={{ display: 'none' }} ref={checkBtn} /> */}
         </form>
       </div>
     </div>
