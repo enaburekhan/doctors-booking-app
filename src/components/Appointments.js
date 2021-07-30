@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { postAppointments } from '../redux/appointmentsSlice';
+import { addAppointment } from '../redux/appointmentsSlice';
 
 const Appointments = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const Appointments = () => {
 
   useEffect(() => {
     if (user) {
-      dispatch(postAppointments(user.userId));
+      dispatch(addAppointment(user.userId));
     }
   }, []);
 

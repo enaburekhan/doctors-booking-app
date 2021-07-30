@@ -8,7 +8,7 @@ export const postAppointments = createAsyncThunk(
   async (
     appointmentDate, doctorId, userId,
   ) => {
-    const response = await fetch(`${API}/appointments`, {
+    const response = await fetch(`${API}/users/${userId}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,9 +32,9 @@ export const postAppointments = createAsyncThunk(
 
 export const addAppointment = createAsyncThunk(
   'appointments/addAppointment',
-  async ({ token, appointment }) => {
+  async (id, token) => {
     const response = await fetch(
-      `${API}/appointments/${appointment.id}`,
+      `${API}/users/${id}/appointments`,
       {
         method: 'PATCH',
         headers: {
@@ -43,13 +43,13 @@ export const addAppointment = createAsyncThunk(
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          appointment_date: appointment.appointment_date + 1,
+          appointment_date: id.appointment_date + 1,
         }),
       },
     );
     if (!response.ok) throw new Error(response.statusText);
     const data = await response.json();
-    console.log(data);
+    console.log('modify data', data);
     return data;
   },
 );

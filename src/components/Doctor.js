@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams, Link } from 'react-router-dom';
 import { getDoctor } from '../redux/doctorSlice';
 
 const Doctor = () => {
@@ -36,6 +36,17 @@ const Doctor = () => {
           <p>{data.specialization}</p>
           <p>{data.experience}</p>
           <p>consultation fee: 3000 Naira</p>
+          <li>
+            <Link
+              to={{
+                pathname: '/appointments/new',
+                doctorId: data.id,
+              }}
+
+            >
+              Add Appointment
+            </Link>
+          </li>
         </div>
       )}
 
