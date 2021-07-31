@@ -11,7 +11,7 @@ const NewAppointment = () => {
   const [successful, setSuccessful] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data: userData } = useSelector((state) => state.user);
-  const { user_id } = userData;
+  const { user_id, jwt } = userData;
   console.log('user_id', user_id);
   const dispatch = useDispatch();
   const { data, error } = useSelector((state) => state.doctors);
@@ -40,12 +40,17 @@ const NewAppointment = () => {
     console.log('apptntmentonchange', appointmentDate);
   };
 
+  const doctor_id = doctorId;
+  const appointment_date = appointmentDate;
+
   const handleBooking = (e) => {
     e.preventDefault();
     setSuccessful(false);
 
     // eslint-disable-next-line no-underscore-dangle
-    dispatch(postAppointments({ user_id, doctorId, appointmentDate }))
+    dispatch(postAppointments({
+      user_id, doctor_id, appointment_date, jwt,
+    }))
       .then(() => {
         setSuccessful(true);
         alert.show('Appointment created', {

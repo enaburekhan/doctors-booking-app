@@ -8,13 +8,13 @@ export const postAppointments = createAsyncThunk(
   'appointments/postAppointments',
   async (
     {
-      userId, appointmentDate, doctorId, jwt,
+      user_id, appointment_date, doctor_id, jwt,
     },
   ) => {
-    console.log('appointmentDate', appointmentDate);
-    console.log('doctorId', doctorId);
-    console.log('userId', userId);
-    fetch(`${API}/users/${userId}/appointments`, {
+    console.log('appointmentDate', appointment_date);
+    console.log('doctorId', doctor_id);
+    console.log('user_id', user_id);
+    const response = await fetch(`${API}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,17 +23,18 @@ export const postAppointments = createAsyncThunk(
       },
 
       body: JSON.stringify({
-        appointmentDate,
-        doctorId,
-        userId,
+        appointment_date,
+        doctor_id,
+        user_id,
       }),
-    }).then((data) => {
-      console.log('Success:', data);
-      localStorage.setItem('token', data.jwt);
-    }).catch((error) => {
-      // request just fail
-      throw new Error('Error:', error);
     });
+    console.log('response', response);
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.failure);
+    localStorage.setItem('token', data.jwt);
+    console.log('appointmentData', data);
+
+    return data;
   },
 );
 
