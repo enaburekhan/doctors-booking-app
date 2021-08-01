@@ -12,7 +12,7 @@ The doctors-booking-app allows patients to book an appointment with a doctor. Th
 [doctors-booking-app]()
 
 ## Screenshot
-![tech-books-tracker]()
+![doctors-booking-app]()
 
 
 ## Built-With
