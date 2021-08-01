@@ -9,12 +9,10 @@ const DoctorsList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('useeffect');
     dispatch(getDoctors());
   }, [dispatch]);
 
   const doctors = useSelector(selectAllDoctors);
-  // console.log('render doctors', doctors);
 
   const renderedDoctors = doctors.data && doctors.data.map((doctor) => (
     <div className="" key={doctor.id}>

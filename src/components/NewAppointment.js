@@ -23,7 +23,6 @@ const NewAppointment = () => {
           loading(false);
         })
         .catch(() => {
-        //   setError('Unable to get doctors list');
         });
     }
   }, [data, dispatch]);

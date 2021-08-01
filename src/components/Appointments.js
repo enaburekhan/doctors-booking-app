@@ -14,7 +14,6 @@ const Appointments = () => {
   }, []);
 
   const appointments = useSelector((state) => state.appointments);
-  console.log('appointments', appointments);
 
   const { data, loading } = appointments;
 
@@ -28,27 +27,14 @@ const Appointments = () => {
       {loading && <span className="spinner-border spinner-border-lg" />}
       <div className="d-flex flex-wrap">
         {(!loading && data.length === 0)
-      && (
-      <h4>
-        You do not have any appointment. Create one
-        <Link to="/appointments/new">
-          here
-        </Link>
-      </h4>
-      )}
-        ;
-        {data && (data.map((appointment) => (
-          <Link to={`/appointments/${appointment.id}`} key={appointment.id}>
-            <div className="card m-4">
-              <div className="card-body">
-                <p>
-                  On &nbsp;
-                  {appointment.appointmentDate}
-                </p>
-              </div>
-            </div>
+        && (
+        <h4>
+          You do not have any appointment. Create one
+          <Link to="/appointments/new">
+            here
           </Link>
-        )))}
+        </h4>
+        )}
       </div>
     </div>
   );

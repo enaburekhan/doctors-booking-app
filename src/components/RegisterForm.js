@@ -13,14 +13,6 @@ const RegisterForm = ({ access, endpoint }) => {
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
 
-  // const token = localStorage.getItem('token');
-
-  // useEffect(() => {
-  //   if (token) {
-  //     history.push('/');
-  //   }
-  // }, [token]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(userAuth({

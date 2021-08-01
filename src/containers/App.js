@@ -7,7 +7,6 @@ import Appointments from '../components/Appointments';
 import Doctor from '../components/Doctor';
 import DoctorsList from '../components/DoctorsList';
 import Login from './Login';
-// import PrivateRoute from './PrivateRoute';
 import Logout from '../components/Logout';
 import NavBar from '../components/NavBar';
 import NewAppointment from '../components/NewAppointment';

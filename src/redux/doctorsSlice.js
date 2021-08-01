@@ -17,8 +17,6 @@ export const getDoctors = createAsyncThunk(
   },
 );
 
-// const initialState = [];
-
 export const doctorsSlice = createSlice({
   name: 'doctors',
   initialState: {
@@ -41,8 +39,6 @@ export const doctorsSlice = createSlice({
   },
 
 });
-
-// export const { listDoctors } = doctorsSlice.actions;
 
 export default doctorsSlice.reducer;
 
