@@ -12,10 +12,8 @@ const NewAppointment = () => {
   const [loading, setLoading] = useState(false);
   const { data: userData } = useSelector((state) => state.user);
   const { user_id, jwt } = userData;
-  console.log('user_id', user_id);
   const dispatch = useDispatch();
   const { data, error } = useSelector((state) => state.doctors);
-  console.log('data', data);
   useEffect(() => {
     if (data === null && userData) {
       dispatch(getDoctors())
@@ -30,13 +28,11 @@ const NewAppointment = () => {
   const onChangeDoctorId = (e) => {
     const doctorId = e.target.value;
     setDoctorId(doctorId);
-    console.log('doctorUnchange', doctorId);
   };
 
   const onChangeAppointmentDate = (e) => {
     const appointmentDate = e.target.value;
     setAppointmentDate(appointmentDate);
-    console.log('apptntmentonchange', appointmentDate);
   };
 
   const doctor_id = doctorId;
@@ -64,7 +60,6 @@ const NewAppointment = () => {
       });
   };
 
-  console.log('data now', data);
   const options = data && (
     data.map((doctor) => (
       <option

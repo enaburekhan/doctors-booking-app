@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
+/* eslint-disable no-use-before-define */
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import API from '../api/api';
@@ -9,6 +10,9 @@ export const postAppointments = createAsyncThunk(
   async (
     {
       user_id, appointment_date, doctor_id, jwt,
+    },
+    {
+      dispatch,
     },
   ) => {
     const response = await fetch(`${API}/appointments`, {
@@ -26,6 +30,7 @@ export const postAppointments = createAsyncThunk(
       }),
     });
     const data = await response.json();
+    dispatch(addAppointments(data));
     if (!response.ok) throw new Error(data.failure);
     localStorage.setItem('token', data.jwt);
 
@@ -35,10 +40,10 @@ export const postAppointments = createAsyncThunk(
 
 export const getAppointments = createAsyncThunk(
   'appointments/getAppointments',
-  async ({ token, id }) => {
+  async ({ jwt, id }) => {
     const response = await fetch(`${API}/appointments/${id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${jwt}`,
       },
     });
     if (!response.ok) throw new Error(response.statusText);
@@ -53,6 +58,11 @@ export const appointmentsSlice = createSlice({
     loading: false,
     error: null,
     data: [],
+  },
+  reducers: {
+    addAppointments: (state, action) => {
+      state.data.push(action.payload);
+    },
   },
   extraReducers: {
     [postAppointments.pending]: (state) => {
@@ -80,5 +90,7 @@ export const appointmentsSlice = createSlice({
 
   },
 });
+
+export const { addAppointments } = appointmentsSlice.actions;
 
 export default appointmentsSlice.reducer;
