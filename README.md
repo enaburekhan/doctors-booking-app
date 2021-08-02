@@ -9,7 +9,7 @@ The doctors-booking-app allows patients to book an appointment with a doctor. Th
 
  
  ### Live Demo:
-[doctors-booking-app]()
+[doctors-booking-app](http://ericenaburekhan.me/doctors-booking-app)
 
 ## Screenshot
 ![doctors-booking-app]()
