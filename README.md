@@ -30,7 +30,7 @@ The doctors-booking-app allows patients to book an appointment with a doctor. Th
 1. Clone this project: git clone https://github.com/enaburekhan/doctors-booking-app.git
 2. Cd into the cloned directory
 3. Install the required dependencies by using: `npm install`
-4. run `npm run start` to display the application on the browser.
+4. run `npm start` to display the application on the browser.
 5. Sign up with a username
 6. Enter password
 6. Enter your age
