@@ -9,18 +9,16 @@ export const postAppointments = createAsyncThunk(
   'appointments/postAppointments',
   async (
     {
-      user_id, appointment_date, doctor_id, jwt,
-    },
-    {
-      dispatch,
+      user_id, appointment_date, doctor_id,
     },
   ) => {
+    const token = localStorage.getItem('token');
     const response = await fetch(`${API}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
 
       body: JSON.stringify({
@@ -30,9 +28,7 @@ export const postAppointments = createAsyncThunk(
       }),
     });
     const data = await response.json();
-    dispatch(addAppointments(data));
     if (!response.ok) throw new Error(data.failure);
-    localStorage.setItem('token', data.jwt);
 
     return data;
   },
@@ -40,10 +36,11 @@ export const postAppointments = createAsyncThunk(
 
 export const getAppointments = createAsyncThunk(
   'appointments/getAppointments',
-  async ({ jwt, id }) => {
-    const response = await fetch(`${API}/appointments/${id}`, {
+  async () => {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${API}/appointments`, {
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (!response.ok) throw new Error(response.statusText);
@@ -59,11 +56,11 @@ export const appointmentsSlice = createSlice({
     error: null,
     data: [],
   },
-  reducers: {
-    addAppointments: (state, action) => {
-      state.data.push(action.payload);
-    },
-  },
+  // reducers: {
+  //   addAppointments: (state, action) => {
+  //     state.data.push(action.payload);
+  //   },
+  // },
   extraReducers: {
     [postAppointments.pending]: (state) => {
       state.loading = true;
@@ -74,7 +71,7 @@ export const appointmentsSlice = createSlice({
     },
     [postAppointments.fulfilled]: (state, action) => {
       state.loading = false;
-      state.data = action.payload;
+      state.data.push(action.payload);
     },
     [getAppointments.pending]: (state) => {
       state.loading = true;
@@ -91,6 +88,6 @@ export const appointmentsSlice = createSlice({
   },
 });
 
-export const { addAppointments } = appointmentsSlice.actions;
+// export const { addAppointments } = appointmentsSlice.actions;
 
 export default appointmentsSlice.reducer;

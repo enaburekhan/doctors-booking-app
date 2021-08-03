@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { getAppointments } from '../redux/appointmentsSlice';
 
 const Appointments = () => {
@@ -13,7 +13,7 @@ const Appointments = () => {
 
   useEffect(() => {
     if (user) {
-      dispatch(getAppointments(user.user_id));
+      dispatch(getAppointments());
     }
   }, []);
 
@@ -36,7 +36,26 @@ const Appointments = () => {
         </h4>
         )}
       </div>
+      {
+      data && data.map((appointment) => {
+        const d = new Date(appointment.appointment_date);
+        const date = d.toUTCString();
+        return (
+          <Link to={`/appointments/${appointment.id}`} key={appointment.id}>
+            <div className="card m-4">
+              <div className="card-body">
+                <p>
+                  On &nbsp;
+                  {date}
+                </p>
+              </div>
+            </div>
+          </Link>
+        );
+      })
+  }
     </div>
+
   );
 };
 

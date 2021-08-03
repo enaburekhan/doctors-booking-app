@@ -11,7 +11,7 @@ const NewAppointment = () => {
   const [successful, setSuccessful] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data: userData } = useSelector((state) => state.user);
-  const { user_id, jwt } = userData;
+  const { user_id } = userData;
   const dispatch = useDispatch();
   const { data, error } = useSelector((state) => state.doctors);
   useEffect(() => {
@@ -44,7 +44,7 @@ const NewAppointment = () => {
 
     // eslint-disable-next-line no-underscore-dangle
     dispatch(postAppointments({
-      user_id, doctor_id, appointment_date, jwt,
+      user_id, doctor_id, appointment_date,
     }))
       .then(() => {
         setSuccessful(true);
@@ -72,7 +72,7 @@ const NewAppointment = () => {
   );
 
   if (!userData) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/Login" />;
   }
   if (successful) {
     return <Redirect to="/appointments" />;
