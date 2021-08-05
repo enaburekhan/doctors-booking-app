@@ -11,12 +11,11 @@ const Appointments = () => {
   console.log('appointments', appointments);
 
   const { data, loading } = appointments;
-
   useEffect(() => {
     if (user) {
-      dispatch(getAppointments(user.user_id));
+      dispatch(getAppointments());
     }
-  }, []);
+  }, [dispatch]);
 
   if (!user) {
     return <Redirect to="/Login" />;

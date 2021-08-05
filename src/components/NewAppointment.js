@@ -27,6 +27,7 @@ const NewAppointment = () => {
 
   const onChangeDoctorId = (e) => {
     const doctorId = e.target.value;
+    console.log('target', e.target, doctorId);
     setDoctorId(doctorId);
   };
 
@@ -105,7 +106,8 @@ const NewAppointment = () => {
             <div className="form-group create">
               <label htmlFor="doctorId">
                 Select from list:
-                <select className="form-control" id="doctorId" onChange={onChangeDoctorId} value={doctorId}>
+                <select className="form-control" id="doctorId" onChange={onChangeDoctorId} value={doctorId} selected={doctor_id}>
+
                   {loading ? <option>Loading..</option> : options }
                 </select>
               </label>

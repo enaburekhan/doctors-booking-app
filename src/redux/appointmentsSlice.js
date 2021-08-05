@@ -8,7 +8,7 @@ export const postAppointments = createAsyncThunk(
   'appointments/postAppointments',
   async (
     {
-      user_id, appointment_date, doctor_id,
+      appointment_date, doctor_id, user_id,
     },
   ) => {
     const token = localStorage.getItem('token');
@@ -26,6 +26,7 @@ export const postAppointments = createAsyncThunk(
         user_id,
       }),
     });
+
     const data = await response.json();
     if (!response.ok) throw new Error(data.failure);
 
@@ -38,6 +39,7 @@ export const getAppointments = createAsyncThunk(
   async () => {
     const token = localStorage.getItem('token');
     const response = await fetch(`${API}/appointments`, {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -55,11 +57,6 @@ export const appointmentsSlice = createSlice({
     error: null,
     data: [],
   },
-  // reducers: {
-  //   addAppointments: (state, action) => {
-  //     state.data.push(action.payload);
-  //   },
-  // },
   extraReducers: {
     [postAppointments.pending]: (state) => {
       state.loading = true;
@@ -86,7 +83,5 @@ export const appointmentsSlice = createSlice({
 
   },
 });
-
-// export const { addAppointments } = appointmentsSlice.actions;
 
 export default appointmentsSlice.reducer;

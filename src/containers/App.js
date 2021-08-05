@@ -10,6 +10,7 @@ import Login from './Login';
 import Logout from '../components/Logout';
 import NavBar from '../components/NavBar';
 import NewAppointment from '../components/NewAppointment';
+import DeleteAppointment from '../components/DeleteAppointment';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/doctors/:id" component={Doctor} />
           <Route exact path="/appointments/new" component={NewAppointment} />
           <Route exact path="/appointments" component={Appointments} />
+          <Route exact path="/appointments/:id" component={DeleteAppointment} />
           <Redirect to="/doctors" />
         </Switch>
       </Router>
