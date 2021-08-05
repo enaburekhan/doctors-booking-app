@@ -41,7 +41,7 @@ const Appointments = () => {
         const d = new Date(appointment.appointment_date);
         const date = d.toUTCString();
         return (
-          <Link to={`/appointments/${appointment.id}`} key={appointment.id}>
+          <Link to={`/appointment/${appointment.id}`} key={appointment.id}>
             <div className="card m-4">
               <div className="card-body">
                 <p>

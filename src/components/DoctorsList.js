@@ -13,22 +13,27 @@ const DoctorsList = () => {
   }, [dispatch]);
 
   const doctors = useSelector(selectAllDoctors);
+  const { loading } = doctors;
 
   const renderedDoctors = doctors.data && doctors.data.map((doctor) => (
-    <div className="" key={doctor.id}>
-      <img src={doctor.image} alt={doctor.name} className="" />
-      <p>{doctor.name}</p>
-      <p>{doctor.specialization}</p>
-      <p>{doctor.experience}</p>
-      <Link to={`/doctors/${doctor.id}`} className="">
-        View Doctor
-      </Link>
+    <div className="card style=width: 18rem listDoctors" key={doctor.id}>
+      <div className="card-body">
+        <img src={doctor.image} alt={doctor.name} className="card-img-top" />
+        <p>{doctor.name}</p>
+        <p>{doctor.specialization}</p>
+        <p>{doctor.experience}</p>
+        <span>experience</span>
+        <Link to={`/doctors/${doctor.id}`} className="btn btn-primary ">
+          View Doctor
+        </Link>
+      </div>
     </div>
   ));
 
   return (
     <div className="">
-      <h1>List Doctors</h1>
+      <h1>Doctors</h1>
+      {loading && <span className="spinner-border spinner-border-lg" />}
       <h2>{renderedDoctors}</h2>
     </div>
 

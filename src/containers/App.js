@@ -15,21 +15,27 @@ import DeleteAppointment from '../components/DeleteAppointment';
 function App() {
   return (
 
-    <div className="App">
-      <Router>
-        <Logout />
-        <NavBar />
-        <Switch>
-          <Route exact path="/Signup" component={Signup} />
-          <Route exact path="/Login" component={Login} />
-          <Route exact path="/doctors" component={DoctorsList} />
-          <Route exact path="/doctors/:id" component={Doctor} />
-          <Route exact path="/appointments/new" component={NewAppointment} />
-          <Route exact path="/appointments" component={Appointments} />
-          <Route exact path="/appointments/:id" component={DeleteAppointment} />
-          <Redirect to="/doctors" />
-        </Switch>
-      </Router>
+    <div className="container">
+      <div className="row">
+        <Router>
+          <div className="col-md-3">
+            <NavBar />
+            <Logout />
+          </div>
+          <Switch>
+            <div className="col-md-9">
+              <Route exact path="/Signup" component={Signup} />
+              <Route exact path="/Login" component={Login} />
+              <Route exact path="/doctors" component={DoctorsList} />
+              <Route exact path="/doctors/:id" component={Doctor} />
+              <Route exact path="/appointments/new" component={NewAppointment} />
+              <Route exact path="/appointments" component={Appointments} />
+              <Route exact path="/appointment/:id" component={DeleteAppointment} />
+              <Redirect to="/doctors" />
+            </div>
+          </Switch>
+        </Router>
+      </div>
 
     </div>
 

@@ -36,3 +36,17 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+/* list doctors */
+
+.listDoctors {
+  width: 30vw;
+  max-height: 100vh;
+  border-radius: 5px;
+  list-style: none;
+}
+
+/* .docAttributes p {
+  font-size: 20px;
+
+} */
