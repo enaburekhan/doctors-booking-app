@@ -43,10 +43,14 @@ const NewAppointment = () => {
     setSuccessful(false);
 
     // eslint-disable-next-line no-underscore-dangle
+
     dispatch(postAppointments({
       user_id, doctor_id, appointment_date,
     }))
       .then(() => {
+        console.log('user_id', user_id);
+        console.log('doctor_id', doctor_id);
+        console.log('appointment_date', appointment_date);
         setSuccessful(true);
         alert.show('Appointment created', {
           type: 'success',

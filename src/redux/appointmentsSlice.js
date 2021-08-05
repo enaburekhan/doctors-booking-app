@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
-/* eslint-disable no-use-before-define */
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import API from '../api/api';
