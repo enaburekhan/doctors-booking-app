@@ -46,7 +46,12 @@
   list-style: none;
 }
 
-/* .docAttributes p {
-  font-size: 20px;
+/* navbar */
 
-} */
+.nav p {
+  color: #444
+}
+
+.doc {
+  color: #92BC0E
+}

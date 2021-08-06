@@ -1,33 +1,28 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-const NavBar = () => (
-  <nav>
-    <section>
-      <h5>Echantill clinic</h5>
+const NavBar = () => {
+  const { data: user } = useSelector((state) => state.user);
 
-      <div className="navContent">
-        <div className="navLinks">
-          <ul>
-            <li>
-              <Link to="/doctors">Doctors</Link>
-            </li>
-            <li>
-              <Link to="/appointments">Appointments</Link>
-            </li>
-            <li>
-              <Link to="/Signup">Signup</Link>
-            </li>
-            <li>
-              <Link to="/Login">Login</Link>
-            </li>
-          </ul>
-
+  return (
+    <nav className="nav flex-column">
+      <p>Echantill clinic</p>
+      {user && user.username}
+      {user ? (
+        <div>
+          <Link to="/doctors" className="doc nav-link active">Doctors</Link>
+          <Link to="/appointments" className="nav-link">Appointments</Link>
         </div>
-      </div>
-
-    </section>
-  </nav>
-);
+      ) : (
+        <div>
+          <Link to="/Signup" className="nav-link">Signup</Link>
+          <Link to="/Login" className="nav-link">Login</Link>
+          <Link to="/home" className="nav-link">Home</Link>
+        </div>
+      )}
+    </nav>
+  );
+};
 
 export default NavBar;

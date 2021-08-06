@@ -26,6 +26,12 @@ export const appointmentSlice = createSlice({
     error: null,
     data: [],
   },
+  reducers: {
+    deleteAppointment(state, action) {
+      if (!state.data) return state.data;
+      return state.data.filter((item) => item.id !== action.payload);
+    },
+  },
   extraReducers: {
     [getAppointment.pending]: (state) => {
       state.loading = true;
@@ -36,10 +42,12 @@ export const appointmentSlice = createSlice({
     },
     [getAppointment.fulfilled]: (state, action) => {
       state.loading = false;
-      state.data.filter((item) => item.id !== action.payload);
+      state.data = action.payload;
     },
 
   },
 });
+
+export const { deleteAppointment } = appointmentSlice.actions;
 
 export default appointmentSlice.reducer;

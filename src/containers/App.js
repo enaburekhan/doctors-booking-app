@@ -11,6 +11,7 @@ import Logout from '../components/Logout';
 import NavBar from '../components/NavBar';
 import NewAppointment from '../components/NewAppointment';
 import DeleteAppointment from '../components/DeleteAppointment';
+import Home from '../components/Home';
 
 function App() {
   return (
@@ -18,12 +19,12 @@ function App() {
     <div className="container">
       <div className="row">
         <Router>
-          <div className="col-md-3">
+          <div className="col-3">
             <NavBar />
             <Logout />
           </div>
           <Switch>
-            <div className="col-md-9">
+            <div className="col-9">
               <Route exact path="/Signup" component={Signup} />
               <Route exact path="/Login" component={Login} />
               <Route exact path="/doctors" component={DoctorsList} />
@@ -31,7 +32,8 @@ function App() {
               <Route exact path="/appointments/new" component={NewAppointment} />
               <Route exact path="/appointments" component={Appointments} />
               <Route exact path="/appointment/:id" component={DeleteAppointment} />
-              <Redirect to="/doctors" />
+              <Route exact path="/home" component={Home} />
+              <Redirect to="/home" />
             </div>
           </Switch>
         </Router>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -12,15 +12,19 @@ const RegisterForm = ({ access, endpoint }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (token) {
+      history.push('/doctors');
+    }
+  }, [token]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(userAuth({
       username, password, age, endpoint,
-    }))
-      .then(() => {
-        history.push('/doctors');
-      });
+    }));
   };
   if (user.loading) {
     return <Loading />;
