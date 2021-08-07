@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { postAppointments } from '../redux/appointmentsSlice';
-import { getDoctors } from '../redux/doctorsSlice';
 
 const NewAppointment = () => {
   const [appointmentDate, setAppointmentDate] = useState('');
@@ -11,19 +10,10 @@ const NewAppointment = () => {
   const [successful, setSuccessful] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data: userData } = useSelector((state) => state.user);
+  console.log('userData', userData);
   const { user_id } = userData;
   const dispatch = useDispatch();
   const { data, error } = useSelector((state) => state.doctors);
-  useEffect(() => {
-    if (data === null && userData) {
-      dispatch(getDoctors())
-        .then(() => {
-          loading(false);
-        })
-        .catch(() => {
-        });
-    }
-  }, [data, dispatch]);
 
   const onChangeDoctorId = (e) => {
     const doctorId = e.target.value;

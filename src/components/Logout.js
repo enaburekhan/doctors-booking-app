@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../redux/userSlice';
 
 const Logout = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const type = useSelector((state) => state.type);
+  // const type = useSelector((state) => state.type);
   const token = localStorage.getItem('token');
   const handleClick = () => {
     localStorage.removeItem('token');
@@ -13,8 +13,8 @@ const Logout = () => {
     history.push('/Login');
   };
   return (
-    <session className="">
-      <h1>{type}</h1>
+    <div className="">
+      {/* <h1>{type}</h1> */}
       { token && (
         <button
           type="button"
@@ -24,7 +24,7 @@ const Logout = () => {
           Logout
         </button>
       ) }
-    </session>
+    </div>
   );
 };
 

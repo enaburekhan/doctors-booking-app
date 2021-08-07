@@ -7,7 +7,6 @@ import Appointments from '../components/Appointments';
 import Doctor from '../components/Doctor';
 import DoctorsList from '../components/DoctorsList';
 import Login from './Login';
-import Logout from '../components/Logout';
 import NavBar from '../components/NavBar';
 import NewAppointment from '../components/NewAppointment';
 import DeleteAppointment from '../components/DeleteAppointment';
@@ -21,7 +20,6 @@ function App() {
         <Router>
           <div className="col-3">
             <NavBar />
-            <Logout />
           </div>
           <Switch>
             <div className="col-9">
