@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/doctors-booking-app/static/css/main.6793d67e.chunk.css",
-    "main.js": "/doctors-booking-app/static/js/main.7191e0c1.chunk.js",
-    "main.js.map": "/doctors-booking-app/static/js/main.7191e0c1.chunk.js.map",
+    "main.css": "/doctors-booking-app/static/css/main.f2f00d45.chunk.css",
+    "main.js": "/doctors-booking-app/static/js/main.e6ba8ef6.chunk.js",
+    "main.js.map": "/doctors-booking-app/static/js/main.e6ba8ef6.chunk.js.map",
     "runtime-main.js": "/doctors-booking-app/static/js/runtime-main.4131caaf.js",
     "runtime-main.js.map": "/doctors-booking-app/static/js/runtime-main.4131caaf.js.map",
     "static/css/2.4be38407.chunk.css": "/doctors-booking-app/static/css/2.4be38407.chunk.css",
-    "static/js/2.e3b493f7.chunk.js": "/doctors-booking-app/static/js/2.e3b493f7.chunk.js",
-    "static/js/2.e3b493f7.chunk.js.map": "/doctors-booking-app/static/js/2.e3b493f7.chunk.js.map",
+    "static/js/2.500b3b9d.chunk.js": "/doctors-booking-app/static/js/2.500b3b9d.chunk.js",
+    "static/js/2.500b3b9d.chunk.js.map": "/doctors-booking-app/static/js/2.500b3b9d.chunk.js.map",
     "index.html": "/doctors-booking-app/index.html",
     "static/css/2.4be38407.chunk.css.map": "/doctors-booking-app/static/css/2.4be38407.chunk.css.map",
-    "static/css/main.6793d67e.chunk.css.map": "/doctors-booking-app/static/css/main.6793d67e.chunk.css.map",
-    "static/js/2.e3b493f7.chunk.js.LICENSE.txt": "/doctors-booking-app/static/js/2.e3b493f7.chunk.js.LICENSE.txt"
+    "static/css/main.f2f00d45.chunk.css.map": "/doctors-booking-app/static/css/main.f2f00d45.chunk.css.map",
+    "static/js/2.500b3b9d.chunk.js.LICENSE.txt": "/doctors-booking-app/static/js/2.500b3b9d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4131caaf.js",
     "static/css/2.4be38407.chunk.css",
-    "static/js/2.e3b493f7.chunk.js",
-    "static/css/main.6793d67e.chunk.css",
-    "static/js/main.7191e0c1.chunk.js"
+    "static/js/2.500b3b9d.chunk.js",
+    "static/css/main.f2f00d45.chunk.css",
+    "static/js/main.e6ba8ef6.chunk.js"
   ]
 }
