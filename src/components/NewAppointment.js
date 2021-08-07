@@ -10,14 +10,12 @@ const NewAppointment = () => {
   const [successful, setSuccessful] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data: userData } = useSelector((state) => state.user);
-  console.log('userData', userData);
   const { user_id } = userData;
   const dispatch = useDispatch();
   const { data, error } = useSelector((state) => state.doctors);
 
   const onChangeDoctorId = (e) => {
     const doctorId = e.target.value;
-    console.log('target', e.target, doctorId);
     setDoctorId(doctorId);
   };
 
@@ -39,9 +37,6 @@ const NewAppointment = () => {
       user_id, doctor_id, appointment_date,
     }))
       .then(() => {
-        console.log('user_id', user_id);
-        console.log('doctor_id', doctor_id);
-        console.log('appointment_date', appointment_date);
         setSuccessful(true);
         alert.show('Appointment created', {
           type: 'success',

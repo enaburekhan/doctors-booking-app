@@ -5,7 +5,6 @@ import { logout } from '../redux/userSlice';
 const Logout = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  // const type = useSelector((state) => state.type);
   const token = localStorage.getItem('token');
   const handleClick = () => {
     localStorage.removeItem('token');
@@ -14,7 +13,6 @@ const Logout = () => {
   };
   return (
     <div className="">
-      {/* <h1>{type}</h1> */}
       { token && (
         <button
           type="button"

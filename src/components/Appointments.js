@@ -8,7 +8,6 @@ const Appointments = () => {
   const { data: user } = useSelector((state) => state.user);
 
   const appointments = useSelector((state) => state.appointments);
-  console.log('appointments', appointments);
 
   const { data, loading } = appointments;
   useEffect(() => {

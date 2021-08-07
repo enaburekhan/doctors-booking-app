@@ -20,7 +20,6 @@ test('postAppointments.pending', () => {
 test('postAppointments.fulfilled', () => {
   const mockAsyncPayload = { appointments: { appointmentDate: '06/08/2021' } };
   const nextState = appointmentsReducer(initialState, postAppointments.fulfilled(mockAsyncPayload));
-  //   expect(nextState.data).toBe(mockAsyncPayload);
   expect(nextState.loading).toBe(false);
 });
 

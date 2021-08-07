@@ -14,7 +14,6 @@ export const getAppointment = createAsyncThunk(
     });
     if (!response.ok) throw new Error(response.statusText);
     const data = await response.json();
-    console.log('getAppointment', data);
     return data;
   },
 );

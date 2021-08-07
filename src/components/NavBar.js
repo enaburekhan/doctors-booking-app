@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Logout from './Logout';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = () => {
   const { data: user } = useSelector((state) => state.user);

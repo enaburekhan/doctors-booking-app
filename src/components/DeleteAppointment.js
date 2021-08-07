@@ -28,10 +28,6 @@ const DeleteAppointment = () => {
     ).then(() => dispatch(deleteAppointment(id)));
   };
 
-  // const handleDelete = (id) => {
-  //   dispatch(deleteAppointment(id));
-  // };
-
   if (successful) {
     return <Redirect to="/appointments" />;
   }
