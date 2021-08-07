@@ -46,25 +46,27 @@ const DeleteAppointment = () => {
         {loading && <span className="spinner-border spinner-border-lg" />}
         {
           doctor && (
-          <div>
-            <p>
-              Appointment Id: &nbsp;
-              {id}
-            </p>
-            <p>
-              With &nbsp;
-              <Link to={`/doctors/${doctor.id}`}>
-                {doctor.data.name}
-              </Link>
-            </p>
-            <button
-              className="btn btn-primary btn-block"
-              type="button"
-              onClick={() => { handleDelete(id); }}
-              disabled={loading}
-            >
-              Delete
-            </button>
+          <div className="card w-50">
+            <div className="card-body">
+              <p className="card-text">
+                Appointment Id: &nbsp;
+                {id}
+              </p>
+              <p>
+                With &nbsp;
+                <Link to={`/doctors/${doctor.id}`}>
+                  {doctor.data.name}
+                </Link>
+              </p>
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={() => { handleDelete(id); }}
+                disabled={loading}
+              >
+                Delete
+              </button>
+            </div>
           </div>
           )
         }

@@ -49,9 +49,10 @@
 /* navbar */
 
 .nav p {
-  color: #444
+  color: #444;
 }
 
 .doc {
-  color: #92BC0E
+  background-color: #92bc0e;
+  color: #fff;
 }

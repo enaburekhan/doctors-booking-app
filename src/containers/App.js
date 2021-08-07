@@ -30,8 +30,8 @@ function App() {
               <Route exact path="/appointments/new" component={NewAppointment} />
               <Route exact path="/appointments" component={Appointments} />
               <Route exact path="/appointment/:id" component={DeleteAppointment} />
-              <Route exact path="/home" component={Home} />
-              <Redirect to="/home" />
+              <Route exact path="/" component={Home} />
+              <Redirect to="/Login" />
             </div>
           </Switch>
         </Router>
