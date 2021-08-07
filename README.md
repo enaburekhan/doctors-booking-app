@@ -5,7 +5,6 @@ The doctors-booking-app allows patients to book an appointment with a doctor. Th
 
 - A user can signup and login
 - A logged in user can book appointments
-- A logged in user can update appointments
 
  
  ### Live Demo:
@@ -33,12 +32,13 @@ The doctors-booking-app allows patients to book an appointment with a doctor. Th
 4. run `npm start` to display the application on the browser.
 5. Sign up with a username
 6. Enter password
-6. Enter your age
+7. Enter your age
 
 
 
 **And to run the test on your local machine, follow these simple steps:**
-1. TBA
+1. run npm i react-test-renderer
+2. run npm test
 
 
 
@@ -56,4 +56,4 @@ Kindly ⭐ Star this project on GitHub — it helps!
 
 ## Acknowledgments
 
-- TBA
+- Design idea by Murat Korkmaz on Behance
