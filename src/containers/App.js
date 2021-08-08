@@ -9,7 +9,7 @@ import DoctorsList from '../components/DoctorsList';
 import Login from './Login';
 import NavBar from '../components/NavBar';
 import NewAppointment from '../components/NewAppointment';
-import DeleteAppointment from '../components/DeleteAppointment';
+import Appointment from '../components/Appointment';
 import Home from '../components/Home';
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
               <Route exact path="/doctors/:id" component={Doctor} />
               <Route exact path="/appointments/new" component={NewAppointment} />
               <Route exact path="/appointments" component={Appointments} />
-              <Route exact path="/appointment/:id" component={DeleteAppointment} />
+              <Route exact path="/appointment/:id" component={Appointment} />
               <Route exact path="/" component={Home} />
               <Redirect to="/Login" />
             </div>

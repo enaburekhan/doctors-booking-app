@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import doctorsReducer from './doctorsSlice';
 import appointmentsReducer from './appointmentsSlice';
-import appointmentReducer from './appointmentSlice';
 import userReducer from './userSlice';
 import typeReducer from './typeSlice';
 import doctorReducer from './doctorSlice';
@@ -13,6 +12,5 @@ export default configureStore({
     user: userReducer,
     type: typeReducer,
     doctor: doctorReducer,
-    appointment: appointmentReducer,
   },
 });

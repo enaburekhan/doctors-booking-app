@@ -16,7 +16,7 @@ const RegisterForm = ({ access, endpoint }) => {
 
   useEffect(() => {
     if (token) {
-      history.push('/');
+      history.push('/Login');
     }
   }, [token]);
 

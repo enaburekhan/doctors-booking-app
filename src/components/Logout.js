@@ -9,7 +9,7 @@ const Logout = () => {
   const handleClick = () => {
     localStorage.removeItem('token');
     dispatch(logout());
-    history.push('/Login');
+    history.push('/');
   };
   return (
     <div className="">

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Redirect, Link, useParams } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import API from '../api/api';
-import { deleteAppointment } from '../redux/appointmentSlice';
+import { getAppointments } from '../redux/appointmentsSlice';
 
-const DeleteAppointment = () => {
+const Appointment = () => {
   const [successful] = useState(false);
   const { data: user } = useSelector((state) => state.user);
+  const doctor = useSelector((state) => state.doctor);
   const dispatch = useDispatch();
 
   if (!user) {
@@ -25,14 +26,12 @@ const DeleteAppointment = () => {
           Authorization: `Bearer ${token}`,
         },
       },
-    ).then(() => dispatch(deleteAppointment(id)));
+    ).then(() => dispatch(getAppointments(token)));
   };
 
   if (successful) {
     return <Redirect to="/appointments" />;
   }
-
-  const doctor = useSelector((state) => state.doctor);
 
   const { data, error, loading } = doctor;
 
@@ -74,4 +73,4 @@ const DeleteAppointment = () => {
   );
 };
 
-export default DeleteAppointment;
+export default Appointment;
