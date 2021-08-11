@@ -16,9 +16,9 @@ const RegisterForm = ({ access, endpoint }) => {
 
   useEffect(() => {
     if (token) {
-      history.push('/Login');
+      history.push('/');
     }
-  }, [token]);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,7 +66,7 @@ const RegisterForm = ({ access, endpoint }) => {
           <label htmlFor="age" className="control-label">
             Age
             <input
-              type="text"
+              type="number"
               name="age"
               id="age"
               required
