@@ -1,3 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* base styles */
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  color: #333;
+  
+}
+
+body {
+  border: 5px solid #f1eff0;
+  margin: 40px 20px 20px;
+  padding: 0px 20px;
+}
+
+
+
+/* navbar */
+.nav {
+  border-right: 5px solid #fcfafa;
+  height: 70vh;
+  max-width: 15vw;
+
+}
+.nav p {
+  color: #444;
+}
+
+.nav a {
+  color: rgb(15, 15, 15);
+}
+
+.doc {
+  background-color: #92bc0e;
+  color: #fff;
+  width: 12vw;
+}
+
+.social-icons {
+  max-width: 5vw;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.home {
+  margin: 0 auto;
+  max-width: 50vw;
+  max-height: 150vh;
+  border-radius: 5px;
+}
+
+/* @media (max-width: 600px) {
+  main {
+    margin-left: 0;
+  }
+} */
+
 
 /* create signUp form */
 .create {
@@ -13,7 +71,7 @@
 
 .create h2 {
   font-size: 20px;
-  color: #f1356d;
+  color: #96bd12;
   margin-bottom: 30px;
 }
 
@@ -29,7 +87,7 @@
 }
 
 .create button {
-  background: #f1356d;
+  background: #96bd12;
   color: #fff;
   border: 0;
   padding: 8px;
@@ -39,21 +97,43 @@
 
 /* list doctors */
 
-.listDoctors {
+/* .listDoctors {
   width: 30vw;
-  max-height: 100vh;
+  max-height: 90vh;
   border-radius: 5px;
   list-style: none;
+} */
+
+/* .listDoctors,
+.listDoctors h2{
+  margin: 0 auto;
+} */
+
+.listDoctors {
+  /* border: 1px solid green; */
+  width: 55vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* navbar */
-
-.nav p {
-  color: #444;
+.listDoctors p,
+.listDoctors span {
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.doc {
-  background-color: #92bc0e;
+.doctor-img {
+  max-width: 10vw;
+}
+
+
+
+.logout button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
   color: #fff;
-  width: 15vw;
+  
 }
+
+

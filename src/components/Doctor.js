@@ -42,7 +42,7 @@ const Doctor = () => {
                   pathname: '/appointments/new',
                   doctorId: data.id,
                 }}
-                className="btn btn-primary"
+                className="btn btn-info"
               >
                 Add Appointment
               </Link>

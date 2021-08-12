@@ -16,9 +16,9 @@ const RegisterForm = ({ access, endpoint }) => {
 
   useEffect(() => {
     if (token) {
-      history.push('/');
+      history.push('/doctors');
     }
-  }, []);
+  }, [token]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

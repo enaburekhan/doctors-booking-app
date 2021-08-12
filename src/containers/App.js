@@ -31,7 +31,7 @@ function App() {
               <Route exact path="/appointments" component={Appointments} />
               <Route exact path="/appointment/:id" component={Appointment} />
               <Route exact path="/" component={Home} />
-              <Redirect to="/Login" />
+              <Redirect to="/" />
             </div>
           </Switch>
         </Router>

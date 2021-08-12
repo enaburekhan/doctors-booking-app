@@ -21,10 +21,10 @@ const Appointments = () => {
   }
 
   return (
-    <div className="container text-center">
+    <div className="card text-center">
       <h3>Appointments</h3>
       {loading && <span className="spinner-border spinner-border-lg" />}
-      <div className="d-flex flex-wrap">
+      <div className="card-body d-flex flex-wrap">
         {(!loading && data.length === 0)
         && (
         <h4>

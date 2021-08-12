@@ -10,7 +10,6 @@ const NewAppointment = () => {
   const [successful, setSuccessful] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data: userData } = useSelector((state) => state.user);
-  const { user_id } = userData;
   const dispatch = useDispatch();
   const { data, error } = useSelector((state) => state.doctors);
 
@@ -26,6 +25,10 @@ const NewAppointment = () => {
 
   const doctor_id = doctorId;
   const appointment_date = appointmentDate;
+  const { user_id } = userData;
+  console.log('user_id', user_id);
+  console.log('doctor_id', doctor_id);
+  console.log('appointment_date', appointment_date);
 
   const handleBooking = (e) => {
     e.preventDefault();
@@ -61,7 +64,7 @@ const NewAppointment = () => {
     ))
   );
 
-  if (!userData) {
+  if (!user_id) {
     return <Redirect to="/Login" />;
   }
   if (successful) {

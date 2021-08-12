@@ -16,14 +16,16 @@ const DoctorsList = () => {
   const { loading } = doctors;
 
   const renderedDoctors = doctors.data && doctors.data.map((doctor) => (
-    <div className="card style=width: 18rem listDoctors" key={doctor.id}>
-      <div className="card-body">
-        <img src={doctor.image} alt={doctor.name} className="card-img-top" />
-        <p>{doctor.name}</p>
-        <p>{doctor.specialization}</p>
-        <p>{doctor.experience}</p>
-        <span>experience</span>
-        <Link to={`/doctors/${doctor.id}`} className="btn btn-primary ">
+    <div className="card style=width: 18rem " key={doctor.id}>
+      <div className="card-body col-3 listDoctors">
+        <img src={doctor.image} alt={doctor.name} className="card-img-top doctor-img" />
+        <p className="doctor-name">{doctor.name}</p>
+        <p className="doctor-specialization">{doctor.specialization}</p>
+        <div>
+          <p className="doctor-experience">{doctor.experience}</p>
+          <p>experience</p>
+        </div>
+        <Link to={`/doctors/${doctor.id}`} className="btn btn-info ">
           View Doctor
         </Link>
       </div>
@@ -32,7 +34,7 @@ const DoctorsList = () => {
 
   return (
     <div className="">
-      <h1>Doctors</h1>
+      <h2>Doctors</h2>
       {loading && <span className="spinner-border spinner-border-lg" />}
       <h2>{renderedDoctors}</h2>
     </div>
