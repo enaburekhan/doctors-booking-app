@@ -27,7 +27,7 @@ const Appointments = () => {
       <div className="card-body d-flex flex-wrap">
         {(!loading && data.length === 0)
         && (
-        <h4>
+        <h4 className="create-appointment">
           You do not have any appointment. Create one
           <Link to="/appointments/new">
             here

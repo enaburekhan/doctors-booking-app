@@ -161,3 +161,19 @@ body {
 .single-doctor-img {
   max-width: 20vw;
 }
+
+.loading,
+.login-error,
+.create-appointment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  padding: 15rem 0;
+}
+
+.create-appointment {
+  width: 80vw;
+}

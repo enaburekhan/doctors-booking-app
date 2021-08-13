@@ -2,11 +2,11 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className=""
+  className="loading"
 >
   <svg
     aria-hidden="true"
-    className="svg-inline--fa fa-spinner fa-w-16 fa-spin fa-10x "
+    className="svg-inline--fa fa-spinner fa-w-16 fa-spin fa-5x "
     data-icon="spinner"
     data-prefix="fas"
     focusable="false"
