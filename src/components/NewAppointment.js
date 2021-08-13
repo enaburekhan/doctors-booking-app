@@ -26,9 +26,6 @@ const NewAppointment = () => {
   const doctor_id = doctorId;
   const appointment_date = appointmentDate;
   const { user_id } = userData;
-  console.log('user_id', user_id);
-  console.log('doctor_id', doctor_id);
-  console.log('appointment_date', appointment_date);
 
   const handleBooking = (e) => {
     e.preventDefault();
@@ -81,7 +78,7 @@ const NewAppointment = () => {
               <label htmlFor="appointmentDate" className="control-label">
                 Appointment Date
                 <input
-                  type="date"
+                  type="datetime-local"
                   className="form-control"
                   name="appointmentDate"
                   id="appointmentDate"

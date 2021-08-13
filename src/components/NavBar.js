@@ -1,4 +1,3 @@
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SocialIcons from '../containers/SocialIcons';
@@ -10,28 +9,31 @@ const NavBar = () => {
 
   return (
 
-    <nav>
+    <nav className="nav">
       <p>Echantill hospital</p>
-      {user && user.username}
-      <div className="nav d-flex justify-content-between flex-column m-4">
-        {token ? (
-          <div>
-            <Link to="/doctors" className="doc nav-link active">Doctors</Link>
-            <Link to="/appointments" className="nav-link">Appointments</Link>
-            <Logout />
-          </div>
-        ) : (
-          <div>
-            <Link to="/" className="nav-link">Home</Link>
-            <Link to="/Signup" className="nav-link">Signup</Link>
-            <Link to="/Login" className="nav-link">Login</Link>
-          </div>
-        )}
+
+      <div className="nav-home d-flex flex-column justify-content-between align-items-center  m-4">
+        <div>
+          {user && user.username}
+          {token ? (
+            <div>
+              <Link to="/doctors" className="doc nav-link active">Doctors</Link>
+              <Link to="/appointments" className="appoint-md nav-link">Appointments</Link>
+              <Logout />
+            </div>
+          ) : (
+            <div className="nav-home">
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/Signup" className="nav-link">Signup</Link>
+              <Link to="/Login" className="nav-link">Login</Link>
+            </div>
+          )}
+        </div>
+        <div className="nav-footer">
+          <SocialIcons />
+          <p>&copy;2021, Echantill hospital</p>
+        </div>
       </div>
-      <footer className="">
-        <SocialIcons />
-        <p>&copy;2021, Echantill hospital</p>
-      </footer>
     </nav>
   );
 };

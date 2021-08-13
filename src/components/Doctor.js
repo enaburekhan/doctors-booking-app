@@ -28,25 +28,23 @@ const Doctor = () => {
       </div>
 
       {data && (
-        <div className="card style=width: 18rem listDoctors">
-          <img src={data.image} alt={data.name} className="card-img-top" />
+        <div className="card style=width: 18rem">
+          <img src={data.image} alt={data.name} className="card-img-top single-doctor-img" />
           <div className="card-body">
             <p>{data.name}</p>
             <p>{data.specialization}</p>
             <p>{data.experience}</p>
-            <span>experience</span>
+            <p>experience</p>
             <p>consultation fee: 3000 Naira</p>
-            <li>
-              <Link
-                to={{
-                  pathname: '/appointments/new',
-                  doctorId: data.id,
-                }}
-                className="btn btn-info"
-              >
-                Add Appointment
-              </Link>
-            </li>
+            <Link
+              to={{
+                pathname: '/appointments/new',
+                doctorId: data.id,
+              }}
+              className="btn btn-info"
+            >
+              Add Appointment
+            </Link>
           </div>
         </div>
       )}

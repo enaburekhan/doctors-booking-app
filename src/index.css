@@ -3,26 +3,30 @@
 /* base styles */
 * {
   margin: 0;
-  font-family: "Quicksand";
+  font-family: 'Quicksand', sans-serif;
   color: #333;
-  
 }
 
 body {
   border: 5px solid #f1eff0;
   margin: 40px 20px 20px;
-  padding: 0px 20px;
+  padding: 0 20px;
+  height: 750px;
 }
 
 
 
 /* navbar */
 .nav {
-  border-right: 5px solid #fcfafa;
-  height: 70vh;
-  max-width: 15vw;
-
+  height: 95vh;
 }
+
+.nav-home {
+  border-right: 5px solid #fcfafa;
+  height: 75vh;
+  min-width: 15vw;
+}
+
 .nav p {
   color: #444;
 }
@@ -37,6 +41,15 @@ body {
   width: 12vw;
 }
 
+.nav-footer {
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  min-width: 16vw;
+}
+
 .social-icons {
   max-width: 5vw;
   font-size: 1vw;
@@ -46,15 +59,15 @@ body {
 .home {
   margin: 0 auto;
   max-width: 50vw;
-  max-height: 150vh;
+  max-height: 70vh;
   border-radius: 5px;
 }
 
-/* @media (max-width: 600px) {
-  main {
-    margin-left: 0;
+@media (max-width: 768px) {
+  .nav {
+    min-width: 20vw;
   }
-} */
+}
 
 
 /* create signUp form */
@@ -97,20 +110,7 @@ body {
 
 /* list doctors */
 
-/* .listDoctors {
-  width: 30vw;
-  max-height: 90vh;
-  border-radius: 5px;
-  list-style: none;
-} */
-
-/* .listDoctors,
-.listDoctors h2{
-  margin: 0 auto;
-} */
-
 .listDoctors {
-  /* border: 1px solid green; */
   width: 55vw;
   display: flex;
   justify-content: space-between;
@@ -124,16 +124,40 @@ body {
 }
 
 .doctor-img {
-  max-width: 10vw;
+  max-width: 8vw;
 }
 
+@media (max-width: 780px) {
+  .nav-home {
+    height: 320vh;
+    width: 45vw;
+    margin-right: 40px;
+  }
 
+  .listDoctors {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+  }
+
+  .doc,
+  .appoint-md {
+    width: 15vw;
+  }
+}
 
 .logout button {
   border: none;
   background-color: rgba(0, 0, 0, 0);
   color: #fff;
-  
 }
 
+.logout span {
+  margin-right: 3px;
+}
 
+/* doctor */
+
+.single-doctor-img {
+  max-width: 20vw;
+}

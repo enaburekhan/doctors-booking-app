@@ -21,6 +21,7 @@ const Logout = () => {
           aria-label="Logout"
           onClick={handleClick}
         >
+          <span>Logout</span>
           <FontAwesomeIcon icon={faPowerOff} />
         </button>
       ) }
