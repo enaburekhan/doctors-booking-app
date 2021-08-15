@@ -21,7 +21,9 @@ export const userAuth = createAsyncThunk(
       }),
     });
     const data = await response.json();
-    if (!response.ok) throw new Error(data.failure);
+    if (response.status >= 400 && response.status < 600) {
+      throw new Error(data.failure);
+    }
     localStorage.setItem('token', data.jwt);
     return data;
   },
