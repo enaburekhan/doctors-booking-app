@@ -10,9 +10,10 @@ const Appointments = () => {
   const appointments = useSelector((state) => state.appointments);
 
   const { data, loading } = appointments;
+  const token = localStorage.getItem('token');
   useEffect(() => {
     if (user) {
-      dispatch(getAppointments());
+      dispatch(getAppointments(token));
     }
   }, [dispatch]);
 

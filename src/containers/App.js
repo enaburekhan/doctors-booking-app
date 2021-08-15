@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router, Redirect, Route, Switch,
+  BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from './Signup';
@@ -31,7 +31,7 @@ function App() {
               <Route exact path="/appointments" component={Appointments} />
               <Route exact path="/appointment/:id" component={Appointment} />
               <Route exact path="/" component={Home} />
-              <Redirect to="/" />
+              {/* <Redirect to="/" /> */}
             </div>
           </Switch>
         </Router>

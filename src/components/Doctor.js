@@ -4,16 +4,15 @@ import { Redirect, useParams, Link } from 'react-router-dom';
 import { getDoctor } from '../redux/doctorSlice';
 
 const Doctor = () => {
-  const { id } = useParams();
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getDoctor(id));
-  }, []);
-
   const user = useSelector((state) => state.user);
   const doctor = useSelector((state) => state.doctor);
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+  const token = localStorage.getItem('token');
+  useEffect(() => {
+    dispatch(getDoctor(id, token));
+  }, []);
 
   if (!user) {
     return <Redirect to="/Login" />;

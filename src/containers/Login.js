@@ -6,6 +6,8 @@ import { changeType } from '../redux/typeSlice';
 const Login = () => {
   const dispatch = useDispatch();
   const access = 'Login';
+  // const token = localStorage.setItem('token');
+
   useEffect(() => {
     dispatch(changeType(access));
   }, []);

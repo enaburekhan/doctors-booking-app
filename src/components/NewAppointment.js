@@ -25,6 +25,11 @@ const NewAppointment = () => {
 
   const doctor_id = doctorId;
   const appointment_date = appointmentDate;
+
+  if (!userData) {
+    return <Redirect to="/Login" />;
+  }
+
   const { user_id } = userData;
 
   const handleBooking = (e) => {
@@ -61,9 +66,6 @@ const NewAppointment = () => {
     ))
   );
 
-  if (!user_id) {
-    return <Redirect to="/Login" />;
-  }
   if (successful) {
     return <Redirect to="/appointments" />;
   }
