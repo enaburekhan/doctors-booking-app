@@ -1,13 +1,176 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* base styles */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Quicksand', sans-serif;
+  color: #333;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  border: 5px solid #f1eff0;
+  margin: 40px 20px 20px;
+  padding: 0 20px;
+  height: 750px;
+}
+
+/* navbar */
+.nav {
+  height: 95vh;
+}
+
+.nav-home {
+  border-right: 5px solid #fcfafa;
+  height: 75vh;
+  min-width: 15vw;
+}
+
+.nav p {
+  color: #444;
+}
+
+.nav a {
+  color: rgb(15, 15, 15);
+}
+
+.doc {
+  background-color: #92bc0e;
+  color: #fff;
+  width: 12vw;
+}
+
+.nav-footer {
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  min-width: 16vw;
+}
+
+.social-icons {
+  max-width: 5vw;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.home {
+  margin: 0 auto;
+  max-width: 50vw;
+  max-height: 70vh;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    min-width: 20vw;
+  }
+}
+
+/* create signUp form */
+.create {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.create label {
+  text-align: left;
+  display: block;
+}
+
+.create h2 {
+  font-size: 20px;
+  color: #96bd12;
+  margin-bottom: 30px;
+}
+
+.create input,
+.create textarea,
+.create select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+
+.create button {
+  background: #96bd12;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* list doctors */
+
+.listDoctors {
+  width: 55vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listDoctors p,
+.listDoctors span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.doctor-img {
+  max-width: 8vw;
+}
+
+@media (max-width: 780px) {
+  .nav-home {
+    height: 320vh;
+    width: 45vw;
+    margin-right: 40px;
+  }
+
+  .listDoctors {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+  }
+
+  .doc,
+  .appoint-md {
+    width: 15vw;
+  }
+}
+
+.logout button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+}
+
+.logout span {
+  margin-right: 3px;
+}
+
+/* doctor */
+
+.single-doctor-img {
+  max-width: 20vw;
+}
+
+.loading,
+.login-error,
+.create-appointment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  padding: 15rem 0;
+}
+
+.create-appointment {
+  width: 80vw;
 }
