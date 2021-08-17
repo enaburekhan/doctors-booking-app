@@ -93,7 +93,10 @@ const NewAppointment = () => {
             <div className="form-group create">
               <label htmlFor="doctorId">
                 Select from list:
-                <select className="form-control" id="doctorId" onChange={onChangeDoctorId} value={doctorId} selected={doctor_id}>
+                <select
+                  value={doctorId}
+                  onChange={onChangeDoctorId}
+                >
 
                   {loading ? <option>Loading..</option> : options }
                 </select>
