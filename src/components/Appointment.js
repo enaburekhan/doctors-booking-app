@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import { Link, Redirect, useParams } from 'react-router-dom';
+import {
+  Link, Redirect, useHistory, useParams,
+} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import API from '../api/api';
 import { getAppointments } from '../redux/appointmentsSlice';
 
 const Appointment = () => {
-  const [successful] = useState(false);
   const { data: user } = useSelector((state) => state.user);
   const doctor = useSelector((state) => state.doctor);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   if (!user) {
     return <Redirect to="/Login" />;
@@ -26,14 +27,13 @@ const Appointment = () => {
           Authorization: `Bearer ${token}`,
         },
       },
-    ).then(() => dispatch(getAppointments(token)));
+    ).then(() => {
+      dispatch(getAppointments(token));
+      history.push('/appointments');
+    });
   };
 
-  if (successful) {
-    return <Redirect to="/appointments" />;
-  }
-
-  const { data, error, loading } = doctor;
+  const { error, loading } = doctor;
 
   return (
     <div className="container">
@@ -66,7 +66,7 @@ const Appointment = () => {
           )
         }
         {
-          error && <p>{data}</p>
+          error && <p>{error}</p>
         }
       </header>
     </div>
