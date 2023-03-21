@@ -14,7 +14,7 @@ export const getDoctors = createAsyncThunk(
     if (!response.ok) throw new Error(response.statusText);
     const data = await response.json();
     return data;
-  },
+  }
 );
 
 export const doctorsSlice = createSlice({
@@ -37,7 +37,6 @@ export const doctorsSlice = createSlice({
       state.data = action.payload;
     },
   },
-
 });
 
 export default doctorsSlice.reducer;
