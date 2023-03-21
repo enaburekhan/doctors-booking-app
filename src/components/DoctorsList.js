@@ -16,22 +16,27 @@ const DoctorsList = () => {
   const doctors = useSelector(selectAllDoctors);
   const { loading } = doctors;
 
-  const renderedDoctors = doctors.data && doctors.data.map((doctor) => (
-    <div className="card style=width: 18rem " key={doctor.id}>
-      <div className="card-body col-3 listDoctors">
-        <img src={doctor.image} alt={doctor.name} className="card-img-top doctor-img" />
-        <p className="doctor-name">{doctor.name}</p>
-        <p className="doctor-specialization">{doctor.specialization}</p>
-        <div>
-          <p className="doctor-experience">{doctor.experience}</p>
-          <p>experience</p>
+  const renderedDoctors = doctors.data
+    && doctors.data.map((doctor) => (
+      <div className="card style=width: 18rem " key={doctor.id}>
+        <div className="card-body col-3 listDoctors">
+          <img
+            src={doctor.image}
+            alt={doctor.name}
+            className="card-img-top doctor-img"
+          />
+          <p className="doctor-name">{doctor.name}</p>
+          <p className="doctor-specialization">{doctor.specialization}</p>
+          <div>
+            <Link to={`/doctors/${doctor.id}`} className="btn btn-info ">
+              View Doctor
+            </Link>
+            <p className="doctor-experience">{doctor.experience}</p>
+            <p>experience</p>
+          </div>
         </div>
-        <Link to={`/doctors/${doctor.id}`} className="btn btn-info ">
-          View Doctor
-        </Link>
       </div>
-    </div>
-  ));
+    ));
 
   return (
     <div className="">
@@ -39,7 +44,6 @@ const DoctorsList = () => {
       {loading && <span className="spinner-border spinner-border-lg" />}
       <h2>{renderedDoctors}</h2>
     </div>
-
   );
 };
 

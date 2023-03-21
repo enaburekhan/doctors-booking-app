@@ -25,7 +25,6 @@ export const userAuth = createAsyncThunk(
       throw new Error(data.failure);
     }
     localStorage.setItem('token', data.jwt);
-    console.log('dataJwt', data.jwt);
     return data;
   },
 );

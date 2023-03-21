@@ -38,9 +38,13 @@ const NewAppointment = () => {
 
     // eslint-disable-next-line no-underscore-dangle
 
-    dispatch(postAppointments({
-      user_id, doctor_id, appointment_date,
-    }))
+    dispatch(
+      postAppointments({
+        user_id,
+        doctor_id,
+        appointment_date,
+      }),
+    )
       .then(() => {
         setSuccessful(true);
         alert.show('Appointment created', {
@@ -55,16 +59,12 @@ const NewAppointment = () => {
       });
   };
 
-  const options = data && (
-    data.map((doctor) => (
-      <option
-        key={doctor.id}
-        value={doctor.id}
-      >
+  const options = data
+    && data.map((doctor) => (
+      <option key={doctor.id} value={doctor.id}>
         {doctor.name}
       </option>
-    ))
-  );
+    ));
 
   if (successful) {
     return <Redirect to="/appointments" />;
@@ -74,50 +74,55 @@ const NewAppointment = () => {
     <div className="col-md-12">
       <div className="card card-container">
         <form onSubmit={handleBooking}>
-          { !successful && (
-          <div>
-            <div className="form-group create">
-              <label htmlFor="appointmentDate" className="control-label">
-                Appointment Date
-                <input
-                  type="datetime-local"
-                  className="form-control"
-                  name="appointmentDate"
-                  id="appointmentDate"
-                  required
-                  value={appointmentDate}
-                  onChange={onChangeAppointmentDate}
-                />
-              </label>
-            </div>
-            <div className="form-group create">
-              <label htmlFor="doctorId">
-                Select from list:
-                <select
-                  value={doctorId}
-                  onChange={onChangeDoctorId}
+          {!successful && (
+            <div>
+              <div className="form-group create">
+                <label htmlFor="appointmentDate" className="control-label">
+                  Appointment Date
+                  <input
+                    type="datetime-local"
+                    className="form-control"
+                    name="appointmentDate"
+                    id="appointmentDate"
+                    required
+                    value={appointmentDate}
+                    onChange={onChangeAppointmentDate}
+                  />
+                </label>
+              </div>
+              <div className="form-group create">
+                <label htmlFor="doctorId">
+                  Select from list:
+                  <select value={doctorId} onChange={onChangeDoctorId}>
+                    {loading ? <option>Loading..</option> : options}
+                  </select>
+                </label>
+              </div>
+              <div className="form-group create">
+                <button
+                  className="btn btn-primary btn-block"
+                  disabled={loading}
+                  type="submit"
                 >
-
-                  {loading ? <option>Loading..</option> : options }
-                </select>
-              </label>
+                  {loading && (
+                    <span className="spinner-border spinner-border-sm" />
+                  )}
+                  <span>Book</span>
+                </button>
+              </div>
             </div>
-            <div className="form-group create">
-              <button className="btn btn-primary btn-block" disabled={loading} type="submit">
-                {loading && (
-                <span className="spinner-border spinner-border-sm" />
-                )}
-                <span>Book</span>
-              </button>
-            </div>
-          </div>
           )}
           {error && (
-          <div className="form-group">
-            <div className={successful ? 'alert alert-success' : 'alert alert-danger'} role="alert">
-              {error}
+            <div className="form-group">
+              <div
+                className={
+                  successful ? 'alert alert-success' : 'alert alert-danger'
+                }
+                role="alert"
+              >
+                {error}
+              </div>
             </div>
-          </div>
           )}
         </form>
       </div>

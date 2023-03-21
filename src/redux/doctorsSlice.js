@@ -3,7 +3,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import API from '../api/api';
 
-// const token = localStorage.getItem('token');
 export const getDoctors = createAsyncThunk(
   'doctors/getDoctors',
   async (token) => {
