@@ -7,7 +7,6 @@ import { getDoctors, selectAllDoctors } from '../redux/doctorsSlice';
 
 const DoctorsList = () => {
   const dispatch = useDispatch();
-  // const token = localStorage.getItem('token');
 
   useEffect(() => {
     dispatch(getDoctors());
