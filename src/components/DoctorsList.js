@@ -23,20 +23,20 @@ const DoctorsList = () => {
   ];
 
   const renderedDoctors = filteredDoctors.map((doctor) => (
-    <div className="card style=width: 18rem " key={doctor.id}>
-      <div className="card-body col-3 listDoctors">
+    <div className='card style=width: 18rem ' key={doctor.id}>
+      <div className='card-body col-3 listDoctors'>
         <img
           src={doctor.image}
           alt={doctor.name}
-          className="card-img-top doctor-img"
+          className='card-img-top doctor-img'
         />
-        <p className="doctor-name">{doctor.name}</p>
-        <p className="doctor-specialization">{doctor.specialization}</p>
+        <p className='doctor-name'>{doctor.name}</p>
+        <p className='doctor-specialization'>{doctor.specialization}</p>
         <div>
-          <Link to={`/doctors/${doctor.id}`} className="btn btn-info ">
+          <Link to={`/doctors/${doctor.id}`} className='btn btn-info '>
             View Doctor
           </Link>
-          <p className="doctor-experience">{doctor.experience}</p>
+          <p className='doctor-experience'>{doctor.experience}</p>
           <p>experience</p>
         </div>
       </div>
@@ -44,9 +44,9 @@ const DoctorsList = () => {
   ));
 
   return (
-    <div className="">
+    <div className=''>
       <h2>Doctors</h2>
-      {loading && <span className="spinner-border spinner-border-lg" />}
+      {loading && <span className='spinner-border spinner-border-lg' />}
       <h2>{renderedDoctors}</h2>
     </div>
   );
