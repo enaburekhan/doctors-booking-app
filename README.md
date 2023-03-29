@@ -1,4 +1,5 @@
 # doctors-booking-app
+
 The doctors-booking-app allows patients to book an appointment with a doctor. This repo host the react-redux frontend. To access the backend. Go to [doctors-appointments-api](https://github.com/enaburekhan/doctors-appointment-api.git)
 
 ### Project features
@@ -6,16 +7,15 @@ The doctors-booking-app allows patients to book an appointment with a doctor. Th
 - A user can signup and login
 - A logged in user can book appointments
 
- 
- ### Live Demo:
-[doctors-booking-app](https://dreamy-pike-b09508.netlify.app)
+### Live Demo:
+
+[doctors-booking-app](https://ericenaburekhan-doctors-booking.netlify.app/)
 
 ## Screenshot
+
 ![doctors-booking-app](https://user-images.githubusercontent.com/51296741/128604204-e71d0644-e88f-4743-b922-e708aa5a23d9.png)
 
-
 ## Built-With
-
 
 - React
 - Redux
@@ -34,13 +34,10 @@ The doctors-booking-app allows patients to book an appointment with a doctor. Th
 6. Enter password
 7. Enter your age
 
-
-
 **And to run the test on your local machine, follow these simple steps:**
+
 1. run npm i react-test-renderer
 2. run npm test
-
-
 
 ## Author Details:
 
