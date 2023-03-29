@@ -21,26 +21,27 @@ const DoctorsList = () => {
       .values(),
   ];
 
-  const renderedDoctors = filteredDoctors.map((doctor) => (
-    <div className="card style=width: 18rem " key={doctor.id}>
-      <div className="card-body col-3 listDoctors">
-        <img
-          src={doctor.image}
-          alt={doctor.name}
-          className="card-img-top doctor-img"
-        />
-        <p className="doctor-name">{doctor.name}</p>
-        <p className="doctor-specialization">{doctor.specialization}</p>
-        <div>
-          <Link to={`/doctors/${doctor.id}`} className="btn btn-info ">
-            View Doctor
-          </Link>
-          <p className="doctor-experience">{doctor.experience}</p>
-          <p>experience</p>
+  const renderedDoctors = filteredDoctors
+    && filteredDoctors.map((doctor) => (
+      <div className="card style=width: 18rem " key={doctor.id}>
+        <div className="card-body col-3 listDoctors">
+          <img
+            src={doctor.image}
+            alt={doctor.name}
+            className="card-img-top doctor-img"
+          />
+          <p className="doctor-name">{doctor.name}</p>
+          <p className="doctor-specialization">{doctor.specialization}</p>
+          <div>
+            <Link to={`/doctors/${doctor.id}`} className="btn btn-info ">
+              View Doctor
+            </Link>
+            <p className="doctor-experience">{doctor.experience}</p>
+            <p>experience</p>
+          </div>
         </div>
       </div>
-    </div>
-  ));
+    ));
 
   return (
     <div className="">
