@@ -22,9 +22,14 @@ const RegisterForm = ({ access, endpoint }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(userAuth({
-      username, password, age, endpoint,
-    }));
+    dispatch(
+      userAuth({
+        username,
+        password,
+        age,
+        endpoint,
+      })
+    );
   };
   if (user.loading) {
     return <Loading />;
@@ -33,70 +38,63 @@ const RegisterForm = ({ access, endpoint }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="form-group create">
-          <label htmlFor="username" className="control-label">
+        <div className='form-group create'>
+          <label htmlFor='username' className='control-label'>
             Username
             <input
-              type="text"
-              name="username"
-              id="username"
+              type='text'
+              name='username'
+              id='username'
               required
-              minLength="3"
-              maxLength="15"
+              minLength='3'
+              maxLength='15'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
         </div>
-        <div className="form-group create">
-          <label htmlFor="password" className="control-label">
+        <div className='form-group create'>
+          <label htmlFor='password' className='control-label'>
             Password
             <input
-              type="password"
-              name="password"
-              id="password"
+              type='password'
+              name='password'
+              id='password'
               required
-              minLength="5"
+              minLength='5'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
         </div>
-        <div className="form-group create">
-          <label htmlFor="age" className="control-label">
+        <div className='form-group create'>
+          <label htmlFor='age' className='control-label'>
             Age
             <input
-              type="number"
-              name="age"
-              id="age"
+              type='number'
+              name='age'
+              id='age'
               required
-              minLength="1"
+              minLength='1'
               value={age}
               onChange={(e) => setAge(e.target.value)}
             />
           </label>
         </div>
 
-        <div className="form-group create">
-          <button
-            type="submit"
-            className="btn btn-primary btn-lg"
-          >
+        <div className='form-group create'>
+          <button type='submit' className='btn btn-primary btn-lg'>
             {access}
           </button>
         </div>
       </form>
-      { access === 'Signup' ? (
-        <p className="text-center">
-          Do you already have an account?
-          {' '}
-          <Link to="/Login">Login</Link>
+      {access === 'Signup' ? (
+        <p className='text-center'>
+          Do you already have an account? <Link to='/Login'>Login</Link>
         </p>
       ) : (
-        <p className="text-center">
-          Do you need to create an account?
-          {' '}
-          <Link to="/Signup">Signup</Link>
+        <p className='text-center'>
+          Do you need to create an account? <Link to='/Signup'>Signup</Link>
         </p>
       )}
     </>
