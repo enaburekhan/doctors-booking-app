@@ -2,45 +2,55 @@ import {
   Link, Redirect, useHistory, useParams,
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import API from '../api/api';
 import { getAppointments } from '../redux/appointmentsSlice';
 
 const Appointment = () => {
   const { data: user } = useSelector((state) => state.user);
-  const doctor = useSelector((state) => state.doctor);
+  const { doctor: doctorState } = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
-
-  if (!user) {
-    return <Redirect to="/Login" />;
-  }
-
   const { id } = useParams();
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
 
-  const handleDelete = (id) => {
+  useEffect(() => {
+    if (user) {
+      const token = localStorage.getItem('token');
+      dispatch(getAppointments(token));
+    }
+  }, [dispatch, user]);
+
+  const handleDelete = async (id) => {
     const token = localStorage.getItem('token');
-    fetch(
-      `${API}/appointments/${id}`,
-      {
+    try {
+      await fetch(`${API}/appointments/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      },
-    ).then(() => {
+      });
       dispatch(getAppointments(token));
+      setDeleteSuccess(true);
       history.push('/appointments');
-    });
+    } catch (error) {
+      console.error('Error deleting appointment:', error);
+    }
   };
 
-  const { error, loading } = doctor;
+  const { loading } = doctorState;
+
+  if (!user) {
+    return <Redirect to="/Login" />;
+  }
 
   return (
     <div className="container">
       <header className="jumbotron">
         {loading && <span className="spinner-border spinner-border-lg" />}
         {
-          doctor && (
+          doctorState && (
           <div className="card w-50">
             <div className="card-body">
               <p className="card-text">
@@ -49,8 +59,8 @@ const Appointment = () => {
               </p>
               <p>
                 With &nbsp;
-                <Link to={`/doctors/${doctor.id}`}>
-                  {doctor.data.name}
+                <Link to={`/doctors/${doctorState.data.id}`}>
+                  {doctorState.data.name}
                 </Link>
               </p>
               <button
@@ -65,9 +75,10 @@ const Appointment = () => {
           </div>
           )
         }
-        {
-          error && <p>{error}</p>
-        }
+        { deleteSuccess && (
+          toast.success('Appointment successfully deleted')
+        )}
+
       </header>
     </div>
   );
