@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 // import { useAlert } from 'react-alert';
 import { postAppointments } from '../redux/appointmentsSlice';
@@ -95,11 +95,11 @@ const NewAppointment = () => {
   };
 
   if (!userData) {
-    return <Redirect to="/Login" />;
+    return <Navigate to="/Login" />;
   }
 
   if (successful) {
-    return <Redirect to="/appointments" />;
+    return <Navigate to="/appointments" />;
   }
 
   return (

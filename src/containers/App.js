@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router, Route, Switch,
+  BrowserRouter as Router, Route, Routes,
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from './Signup';
@@ -21,19 +21,21 @@ function App() {
           <div className="col-3">
             <NavBar />
           </div>
-          <Switch>
-            <div className="col-9">
-              <Route exact path="/Signup" component={Signup} />
-              <Route exact path="/Login" component={Login} />
-              <Route exact path="/doctors" component={DoctorsList} />
-              <Route exact path="/doctors/:id" component={Doctor} />
-              <Route exact path="/appointments/new" component={NewAppointment} />
-              <Route exact path="/appointments" component={Appointments} />
-              <Route exact path="/appointment/:id" component={Appointment} />
-              <Route exact path="/" component={Home} />
-              {/* <Redirect to="/" /> */}
-            </div>
-          </Switch>
+          <div className="col-9">
+            <Routes>
+
+              <Route path="/Signup" element={<Signup />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/doctors" element={<DoctorsList />} />
+              <Route path="/doctors/:id" element={<Doctor />} />
+              <Route path="/appointments/new" element={<NewAppointment />} />
+              <Route path="/appointments" element={<Appointments />} />
+              <Route path="/appointment/:id" element={<Appointment />} />
+              <Route path="/" element={<Home />} />
+
+            </Routes>
+          </div>
+
         </Router>
       </div>
 

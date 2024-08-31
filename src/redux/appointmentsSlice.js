@@ -57,30 +57,32 @@ export const appointmentsSlice = createSlice({
     error: null,
     data: [],
   },
-  extraReducers: {
-    [postAppointments.pending]: (state) => {
-      state.loading = true;
-    },
-    [postAppointments.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    },
-    [postAppointments.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.data.push(action.payload);
-    },
-    [getAppointments.pending]: (state) => {
-      state.loading = true;
-    },
-    [getAppointments.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    },
-    [getAppointments.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.data = action.payload;
-    },
+  reducers: {},
 
+  extraReducers: (builder) => {
+    builder
+      .addCase(postAppointments.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(postAppointments.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(postAppointments.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data.push(action.payload);
+      })
+      .addCase(getAppointments.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAppointments.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getAppointments.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      });
   },
 });
 

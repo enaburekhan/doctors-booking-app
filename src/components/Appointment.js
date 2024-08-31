@@ -1,5 +1,5 @@
 import {
-  Link, Redirect, useHistory, useParams,
+  Link, Navigate, useNavigate, useParams,
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -9,9 +9,9 @@ import { getAppointments } from '../redux/appointmentsSlice';
 
 const Appointment = () => {
   const { data: user } = useSelector((state) => state.user);
-  const { doctor: doctorState } = useSelector((state) => state);
+  const doctorState = useSelector((state) => state.doctor);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { id } = useParams();
   const [deleteSuccess, setDeleteSuccess] = useState(false);
 
@@ -33,7 +33,7 @@ const Appointment = () => {
       });
       dispatch(getAppointments(token));
       setDeleteSuccess(true);
-      history.push('/appointments');
+      navigate('/appointments');
     } catch (error) {
       console.error('Error deleting appointment:', error);
     }
@@ -42,7 +42,7 @@ const Appointment = () => {
   const { loading } = doctorState;
 
   if (!user) {
-    return <Redirect to="/Login" />;
+    return <Navigate to="/Login" />;
   }
 
   return (

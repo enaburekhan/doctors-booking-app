@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { getAppointments } from '../redux/appointmentsSlice';
 
 const Appointments = () => {
@@ -18,7 +18,7 @@ const Appointments = () => {
   }, [dispatch]);
 
   if (!user) {
-    return <Redirect to="/Login" />;
+    return <Navigate to="/Login" />;
   }
 
   return (

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useParams, Link } from 'react-router-dom';
+import { Navigate, useParams, Link } from 'react-router-dom';
 import { getDoctor } from '../redux/doctorSlice';
 
 const Doctor = () => {
@@ -15,7 +15,7 @@ const Doctor = () => {
   }, []);
 
   if (!user) {
-    return <Redirect to="/Login" />;
+    return <Navigate to="/Login" />;
   }
 
   const { data, loading } = doctor;

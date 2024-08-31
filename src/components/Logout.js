@@ -1,17 +1,17 @@
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { logout } from '../redux/userSlice';
 
 const Logout = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');
   const handleClick = () => {
     localStorage.removeItem('token');
     dispatch(logout());
-    history.push('/');
+    navigate('/');
   };
   return (
     <div className="logout">

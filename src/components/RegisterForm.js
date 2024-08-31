@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { userAuth } from '../redux/userSlice';
 import Loading from './Loading';
 
 const RegisterForm = ({ access, endpoint }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [username, setUsername] = useState('');
@@ -16,7 +16,7 @@ const RegisterForm = ({ access, endpoint }) => {
 
   useEffect(() => {
     if (token) {
-      history.push('/doctors');
+      navigate('/doctors');
     }
   }, [token]);
 

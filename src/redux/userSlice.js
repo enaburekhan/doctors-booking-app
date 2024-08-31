@@ -43,19 +43,20 @@ export const userSlice = createSlice({
       data: null,
     }),
   },
-  extraReducers: {
-    [userAuth.pending]: (state) => {
-      state.loading = true;
-    },
-    [userAuth.rejected]: (state, action) => {
-      state.loading = false;
-      toast.error(action.error.message);
-      state.error = action.error.message;
-    },
-    [userAuth.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.data = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(userAuth.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(userAuth.rejected, (state, action) => {
+        state.loading = false;
+        toast.error(action.error.message);
+        state.error = action.error.message;
+      })
+      .addCase(userAuth.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      });
   },
 });
 

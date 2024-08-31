@@ -23,18 +23,21 @@ export const doctorSlice = createSlice({
     error: null,
     data: null,
   },
-  extraReducers: {
-    [getDoctor.pending]: (state) => {
-      state.loading = true;
-    },
-    [getDoctor.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    },
-    [getDoctor.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.data = action.payload;
-    },
+  reducers: {},
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(getDoctor.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getDoctor.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getDoctor.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      });
   },
 
 });
