@@ -23,7 +23,7 @@ const DoctorsList = () => {
 
   const renderedDoctors = filteredDoctors
     && filteredDoctors.map((doctor) => (
-      <div className="card style=width: 18rem " key={doctor.id}>
+      <div className="" key={doctor.id}>
         <div className="card-body col-3 listDoctors">
           <img
             src={doctor.image}

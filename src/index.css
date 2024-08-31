@@ -108,10 +108,12 @@ body {
 /* list doctors */
 
 .listDoctors {
+  border: 1px solid #F1EFF0;
   width: 55vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem;
 }
 
 .listDoctors p,
