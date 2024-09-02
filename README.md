@@ -9,7 +9,7 @@ The doctors-booking-app allows patients to book an appointment with a doctor. Th
 
 ### Live Demo:
 
-[doctors-booking-app](https://enaburekhan-doctors-booking-app.netlify.app)
+[doctors-booking-app](https://bearwynds-doctors-app.netlify.app/)
 
 ## Screenshot
 
